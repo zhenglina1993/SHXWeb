@@ -1,0 +1,107 @@
+﻿/*提示框*/
+.status
+{
+    margin-top:20px;
+    padding: 8px 10px 5px 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    overflow: auto;
+    margin-bottom: 20px;
+    clear: both;
+    cursor:pointer;
+    color:#888;
+    -webkit-box-shadow: #666 2px 2px 5px;
+    -moz-box-shadow: #666 2px 2px 5px;
+    box-shadow: #666 2px 2px 5px;
+}
+.status img
+{
+    float: left;
+    padding-right: 5px;
+}
+.status p
+{
+    padding:0px;
+    margin:0px;
+}
+.status p span
+{
+    font-weight: bold;
+}
+.status .close
+{
+    float: right;
+    color: #fff;
+    text-align: center;
+    margin-left: 10px;
+}
+.status .close a
+{
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    width: 10px;
+    height: 10px;
+    display: block;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    line-height: 0.6em;
+    top: -2px;
+    font-family:Arial;
+}
+
+.info
+{
+    border: 2px solid #BF9900;
+    background: #FEEB9C url(img/bg_status_info.png) repeat-x top;
+}
+.info span
+{
+    color: #BF9900;
+}
+.info .close a
+{
+    background-color: #BF9900;
+}
+.info .close a:hover
+{
+    background-color: #9B7C00;
+}
+
+
+.result
+{
+    border: 2px solid #8EA534;
+    background: #CBDA8F url(img/bg_status_result.png) repeat-x top;
+}
+.result span
+{
+    color: #8EA534;
+}
+.result .close a
+{
+    background: #8EA534;
+}
+.result .close a:hover
+{
+    background: #829829;
+}
+
+.error
+{
+    border: 2px solid #990000;
+    background: #F5D0CD url(img/bg_status_error.png) repeat-x top;
+}
+.error span
+{
+    color: #990000;
+}
+.error .close a
+{
+    background: #990000;
+}
+.error .close a:hover
+{
+    background: #730D0D;
+}

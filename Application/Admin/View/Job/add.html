@@ -24,46 +24,42 @@ and open the template in the editor.
             <div class="col-sm-9">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>添加新闻</h5>
+                        <h5>添加职位</h5>
                     </div>
                     <div class="ibox-content">
                          <div id="ts" />
                         <form class="form-horizontal m-t" id="commentForm" novalidate="novalidate">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">标题：</label>
+                                <label class="col-sm-2 control-label">职位：</label>
                                 <div class="col-sm-9">
-                                    <input id="tb_title" name="name" placeholder="请输入新闻标题..." minlength="2" type="text" class="form-control" required="" aria-required="true">
+                                    <input id="p_zw" name="name" placeholder="请输入职位..." minlength="2" type="text" class="form-control" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">来源：</label>
+                                <label class="col-sm-2 control-label">地点：</label>
                                 <div class="col-sm-9">
-                                    <input id="tb_source" type="text" class="form-control" placeholder="请输入新闻来源..." value="森华信" name="email" required="" aria-required="true">
+                                    <input id="p_dd" type="text" class="form-control" placeholder="请输入工作地点,如:浙江杭州"   required="" aria-required="true">
                                 </div>
                             </div>
                          
       <div class="form-group">
-        <label class="col-sm-2 control-label">类别：</label>
+        <label class="col-sm-2 control-label">类型：</label>
         <div class="col-sm-3">
-            <select class="form-control" id='cb_category'>
-                <option value="1">行业动态</option>
-                <option value='2'>集团新闻</option>
+            <select class="form-control" id='p_lx'>
+                <option value="1">社招</option>
+                <option value='2'>校招</option>
             </select>
         </div>
     </div>
 
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">封面：</label>
+                          <div class="form-group">
+                                <label class="col-sm-2 control-label">薪资：</label>
                                 <div class="col-sm-9">
-                                 <button type="button" id="j_upload_img_btn">封面上传</button>
-<ul id="upload_img_wrap"></ul>
-<!-- 加载编辑器的容器 -->
-<textarea id="uploadEditor" style="display: none;"></textarea>
-
+                                    <input id="p_xz" name="name" placeholder="请输入薪资,如:8K-10K" minlength="2" type="text" class="form-control" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">内容：</label>
+                                <label class="col-sm-2 control-label">职责要求：</label>
                                 <div class="col-sm-9">
                                     <script id="editor" type="text/plain" style="height:300px;"></script>
                                 </div>
@@ -86,52 +82,22 @@ and open the template in the editor.
 <script>
      var ue = UE.getEditor('editor');
      // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
- var uploadEditor = UE.getEditor("uploadEditor", {
-        isShow: false,
-        focus: false,
-        enableAutoSave: false,
-        autoSyncData: false,
-        autoFloatEnabled:false,
-        wordCount: false,
-        sourceEditor: null,
-        scaleEnabled:true,
-        toolbars: [["insertimage", "attachment"]]
-    });
-uploadEditor.ready(function () {
-    // 监听插入图片
-    uploadEditor.addListener("beforeInsertImage", _beforeInsertImage);
-});
-document.getElementById('j_upload_img_btn').onclick = function () {
-    var dialog = uploadEditor.getDialog("insertimage");
-    dialog.title = '图片管理';
-    dialog.render();
-    dialog.open();
-};
-function _beforeInsertImage(t, result) {
-    var imageHtml = '';
-//    for(var i in result){
-//        imageHtml += '<li><img src="'+result[i].src+'" alt="'+result[i].alt+'" height="150"></li>';
-//    }
-    if (result.length>0) {
-     imageHtml += '<img id="img" src="'+result[0].src+'" alt="'+result[0].alt+'" height="150">';
-    }
-    document.getElementById('upload_img_wrap').innerHTML = imageHtml;
-}
 
 function save(){
-    var title=$('#tb_title').val();
-    var source=$('#tb_source').val();
-    var img=$('#img').attr('src');
-    var category=$('#cb_category').val();
+    var zw=$('#p_zw').val();
+    var dd=$('#p_dd').val();
+   var xz=$('#p_xz').val();
+    var lx=$('#p_lx').val();
     var content=ue.getContent();
-   $.post('save',{title:title,source:source,img:img,category:category,content:content},function(d){
+   $.post('save',{zw:zw,dd:dd,xz:xz,lx:lx,content:content},function(d){
        if (d==0) {
     //alert('添加成功.');
     status("info", "添加成功！");
-    $('#tb_title').val('');
-   // $('#tb_source').val('');
+    $('#p_zw').val('');
+    $('#p_dd').val('');
+    $('#p_xz').val('');
     var content=ue.setContent('');
-    $('#img').remove();
+    
 }
    })
 }

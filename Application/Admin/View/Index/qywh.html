@@ -31,11 +31,36 @@
     <script src="__PUBLIC__/js/plugins/pace/pace.min.js"></script>
 </head>
 <body>
-<div>
-    <h1>企业文化</h1>
-    <script id="editor" type="text/plain" style="height:300px;"></script>
-    <button type="button" onclick="request();" class="btn btn-w-m btn-info">保  存</button>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>企业文化</h5>
+                    </div>
+                    <div class="ibox-content">
+                         <div id="ts" />
+                       
+                            <div class="form-group">
+<!--                                <label class="col-sm-2 control-label">职位：</label>-->
+                                <div class="col-sm-12">
+                                     <script id="editor" type="text/plain" style="height:300px;"></script>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-sm-2 col-sm-offset-9">
+                                        <button type="button" onclick="request();" class="btn btn-w-m btn-info">保  存</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
 </div>
+
 <!--<div id="btns">
     <div>
         <button onclick="getAllHtml()">获得html的内容</button>
