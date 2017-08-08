@@ -94,7 +94,7 @@ class IndexController extends Controller {
         $r =  $Kv->where($where)->find();
         if ($r==NULL) {
             $Kv->create();
-            $Kv->key="qyjs";
+            $Kv->key="qywh";
             $Kv->value="请在此输入企业文化";
             $Kv->add();
              $this->assign("content","请在此输入企业文化");

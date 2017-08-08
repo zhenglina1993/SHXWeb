@@ -50,6 +50,9 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
+                                <a class="J_menuItem" href="<?php echo U('News/add');?>">添加新闻</a>
+                            </li>
+                            <li>
                                 <a class="J_menuItem" href="<?php echo U('News/index',array(t=>1));?>">行业动态</a>
                             </li>
                             <li>

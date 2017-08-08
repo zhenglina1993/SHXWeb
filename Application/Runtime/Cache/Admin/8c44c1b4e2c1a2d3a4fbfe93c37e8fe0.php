@@ -27,17 +27,6 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5><?php echo ($title); ?></h5>
-<!--                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="table_data_tables.html#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>-->
                     </div>
                     <div class="ibox-content">
 
@@ -49,6 +38,7 @@
                                     <th>来源</th>
                                     <th>浏览量</th>
                                     <th>发布时间</th>
+                                    <th>操作</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -59,6 +49,12 @@
                                     <td><?php echo ($i["source"]); ?></td>
                                     <td class="center"><?php echo ($i["readnum"]); ?></td>
                                     <td class="center"><?php echo ($i["create_dt"]); ?></td>
+                                    <td>
+                                        <button class="btn btn-red " onclick="del(<?php echo ($i["id"]); ?>)" type="button">
+                                            <i class="fa fa-dropbox"></i>
+                                            &nbsp;&nbsp;<span class="bold">删除</span>
+                                        </button>
+                                    </td>
                                 </tr><?php endforeach; endif; ?>
                             </tbody>
                             <tfoot>
@@ -68,6 +64,7 @@
                                     <th>来源</th>
                                     <th>浏览量</th>
                                     <th>发布时间</th>
+                                     <th>操作</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -89,7 +86,14 @@
                 { "bSort": false}
             );  
     });
-
+    var t=<?php echo ($t); ?>;
+    function del(id){
+        if (confirm('是否确定删除？')) {
+       $.post("<?php echo U('News/del');?>",{id:id,t:t},function(d){
+            window.location.reload();
+        })
+       }
+    }
 </script>
 </body>
 
