@@ -35,7 +35,6 @@
                         <div class="dropdown profile-element">
                             <span><img alt="image" class="img-thumbnail" src="/Public/img/profile_small.jpg" /></span>
                         </div>
-                       
                     </li>
                     <li>
                         <a  class="J_menuItem" href="info">
@@ -51,15 +50,13 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="graph_echarts.html">行业资讯</a>
+                                <a class="J_menuItem" href="<?php echo U('News/index',array(t=>1));?>">行业动态</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="graph_flot.html">公司新闻</a>
+                                <a class="J_menuItem" href="<?php echo U('News/index',array(t=>2));?>">集团新闻</a>
                             </li>
                         </ul>
                     </li>
-
-                 
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">企业设置</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
