@@ -22,7 +22,18 @@ class ProductController extends Controller {
         $this->display('table');
     }
 
-    public function add(){       
+    public function add(){     
+        $id=  I("id");
+        if ($id==NULL) {
+            $this->assign("title","新增项目");
+        }
+        else{
+            $Product=D('Product');
+            $where["id"]=$id;
+            $r=$Product->where($where)->find();
+            $this->assign("title","编辑项目");
+            $this->assign("pro",$r);
+        }
         $this->display();
     }
     
@@ -37,10 +48,15 @@ class ProductController extends Controller {
             $Product->add();
             //echo $_POST["imgs"];
             //TODO: add imgs
-            echo 0;;
+            echo 200;;
         }
         else{
-            echo 400;
+            $Product->create();
+            $Product->id=$_GET["id"];
+            $Product->content=$_POST["content"];
+            $Product->save();
+            //echo $Product->getLastSql();
+            echo 200;
         }
        
 //        $Product->name=$_POST["name"];

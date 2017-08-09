@@ -19,7 +19,7 @@
     
     <link href="__PUBLIC__/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 
-
+  
 </head>
 
 <body class="gray-bg">
@@ -75,6 +75,7 @@
                                             <i class="fa fa-dropbox"></i>
                                             &nbsp;&nbsp;<span class="bold">删除</span>
                                         </button>
+                                      <button type="button" class="btn btn-red " onclick="window.location.href='add?id={$i.id}'">编辑</button>
                                     </td>
                                 </tr>
                             </foreach>
@@ -140,6 +141,7 @@
         $(this).removeClass('hover');    
     });    
     });
+    
 </script>
 </body>
 

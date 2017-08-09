@@ -26,7 +26,15 @@ and open the template in the editor.
    <div class="col-sm-9"> 
     <div class="ibox float-e-margins"> 
      <div class="ibox-title"> 
-      <h5>添加项目</h5> 
+      <h5>{$title}</h5> 
+       <div class="ibox-tools">
+             <button class="btn btn-primary btn-xs" type="button" onclick="save();"><i class="fa fa-check"></i>保存
+             </button>
+      <if condition="$title eq '新增项目'"><else />
+            <a href="{:U('Product/index')}" class="btn btn-primary btn-xs">返回列表</a>
+        
+      </if>
+        </div>
      </div> 
      <div class="ibox-content"> 
       <div id="ts"> 
@@ -34,35 +42,36 @@ and open the template in the editor.
         <div class="form-group"> 
          <label class="col-sm-2 control-label">项目名称：</label> 
          <div class="col-sm-10"> 
-          <input id="p_name" name="name" placeholder="请输入项目名称..." minlength="2" type="text" class="form-control" required="" aria-required="true" /> 
+             
+             <input id="p_name" value="{$pro.name}" placeholder="请输入项目名称..." minlength="2" type="text"  class="form-control" required="" aria-required="true" />
          </div> 
         </div> 
         <div class="form-group"> 
          <label class="col-sm-2 control-label">地址：</label> 
          <div class="col-sm-10"> 
-          <input id="p_address" type="text" class="form-control" placeholder="请输入项目地址..." required="" aria-required="true" /> 
+          <input id="p_address" value="{$pro.address}" type="text" class="form-control" placeholder="请输入项目地址..." required="" aria-required="true" /> 
          </div> 
         </div> 
         <div class="form-group"> 
          <label class="col-sm-2 control-label">用地面积(㎡)：</label> 
          <div class="col-sm-4"> 
-          <input id="p_area_yd" type="number" class="form-control"  required="" aria-required="true" /> 
+          <input id="p_area_yd" type="number" value="{$pro.area_yd}" class="form-control"  required="" aria-required="true" /> 
          </div>
          
            <label class="col-sm-2 control-label">建筑面积(㎡)：</label> 
          <div class="col-sm-4"> 
-          <input id="p_area_jz" type="number" class="form-control" required="" aria-required="true" /> 
+          <input id="p_area_jz" type="number" value="{$pro.area_jz}" class="form-control" required="" aria-required="true" /> 
          </div> 
         </div> 
         <div class="form-group"> 
          <label class="col-sm-2 control-label">容积率：</label> 
          <div class="col-sm-4"> 
-          <input id="p_rongji" type="number" class="form-control"  required="" aria-required="true" /> 
+          <input id="p_rongji" type="number" value="{$pro.rongji}" class="form-control"  required="" aria-required="true" /> 
          </div> 
          
           <label class="col-sm-2 control-label">绿化率(%)：</label> 
          <div class="col-sm-4"> 
-          <input id="p_lvhua" type="number" class="form-control"  required="" aria-required="true" /> 
+          <input id="p_lvhua" type="number" value="{$pro.lvhua}" class="form-control"  required="" aria-required="true" /> 
          </div> 
         </div> 
         <div class="form-group"> 
@@ -98,11 +107,11 @@ and open the template in the editor.
          </div> 
         </div> 
           
-        <div class="form-group"> 
+<!--        <div class="form-group"> 
          <div class="col-sm-4 col-sm-offset-3"> 
           <button class="btn btn-primary" type="button" onclick="save();">提交</button> 
          </div> 
-        </div> 
+        </div> -->
        </form> 
       </div> 
      </div> 
@@ -117,6 +126,12 @@ and open the template in the editor.
          
      var ue = UE.getEditor('editor');
      // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
+     
+        ue.addListener("ready", function () {  
+               // editor准备好之后才可以使用  
+               ue.setContent("{$pro.content}");  
+  
+       }); 
 
 function save(){
     var name=$('#p_name').val();
@@ -128,10 +143,15 @@ function save(){
     var category=$('#p_category').val();
     var sell=$('#p_sell').val();
     var content=ue.getContent();
+    var action=<if condition="$title eq '新增项目'">1<else />2</if>;
+    var url=<if condition="$title eq '新增项目'">"update"<else />"update?id={$pro.id}"</if>;
     var imgs="adsfasdf|Asdf|Asdfa|123123";//图集
-   $.post('update',{imgs:imgs,t:1,name:name,address:address,area_yd:ydmj,area_jz:jzmj,content:content,rongji:rongji,lvhua:lvhua,category:category,sell:sell},function(d){
-       if (d==0) {
+   $.post(url,{imgs:imgs,t:action,name:name,address:address,area_yd:ydmj,area_jz:jzmj,content:content,rongji:rongji,lvhua:lvhua,category:category,sell:sell},function(d){
+       if (d==200) {
     status("info", "添加成功！");
+    if (action==2) {
+    window.location.href="{:U('Product/index')}";
+}
     var content=ue.setContent('');
     
 }
