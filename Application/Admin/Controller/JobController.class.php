@@ -25,6 +25,14 @@ class JobController extends Controller {
         $this->display('table');
     }
     
+    function apply(){
+        $Apply=D('Apply');
+        $where["state"]=0;
+        $list=$Apply->where($where)->order('id desc')->select();
+        $this->assign("list",$list);
+        $this->display();
+    }
+            
      function add(){
         $this->display('add');
     }
