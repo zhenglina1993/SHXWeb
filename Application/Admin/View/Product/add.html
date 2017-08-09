@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+ <head> 
+  <title>TODO supply a title</title> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <link href="__PUBLIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet" /> 
+  <link href="__PUBLIC__/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" /> 
+  <link href="__PUBLIC__/css/animate.min.css" rel="stylesheet" /> 
+  <link href="__PUBLIC__/css/style.min.css?v=4.0.0" rel="stylesheet" /> 
+  <link href="__PUBLIC__/status/status.css" rel="stylesheet" /> 
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/status/status.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script> 
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script> 
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script> 
+  
+  <link href="__PUBLIC__/js/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
+ </head> 
+ <body> 
+  <div class="row"> 
+   <div class="col-sm-9"> 
+    <div class="ibox float-e-margins"> 
+     <div class="ibox-title"> 
+      <h5>添加项目</h5> 
+     </div> 
+     <div class="ibox-content"> 
+      <div id="ts"> 
+       <form class="form-horizontal m-t" id="commentForm" novalidate="novalidate"> 
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">项目名称：</label> 
+         <div class="col-sm-10"> 
+          <input id="p_name" name="name" placeholder="请输入项目名称..." minlength="2" type="text" class="form-control" required="" aria-required="true" /> 
+         </div> 
+        </div> 
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">地址：</label> 
+         <div class="col-sm-10"> 
+          <input id="p_address" type="text" class="form-control" placeholder="请输入项目地址..." required="" aria-required="true" /> 
+         </div> 
+        </div> 
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">用地面积(㎡)：</label> 
+         <div class="col-sm-4"> 
+          <input id="p_area_yd" type="number" class="form-control"  required="" aria-required="true" /> 
+         </div>
+         
+           <label class="col-sm-2 control-label">建筑面积(㎡)：</label> 
+         <div class="col-sm-4"> 
+          <input id="p_area_jz" type="number" class="form-control" required="" aria-required="true" /> 
+         </div> 
+        </div> 
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">容积率：</label> 
+         <div class="col-sm-4"> 
+          <input id="p_rongji" type="number" class="form-control"  required="" aria-required="true" /> 
+         </div> 
+         
+          <label class="col-sm-2 control-label">绿化率(%)：</label> 
+         <div class="col-sm-4"> 
+          <input id="p_lvhua" type="number" class="form-control"  required="" aria-required="true" /> 
+         </div> 
+        </div> 
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">建筑类型：</label> 
+         <div class="col-sm-4"> 
+          <select class="form-control" id="p_category"> <option value="板楼">板楼</option> <option value="板塔结合">板塔结合</option> </select> 
+         </div> 
+          <label class="col-sm-2 control-label">状态：</label> 
+         <div class="col-sm-4"> 
+          <select class="form-control" id="p_sell"> <option value="0">在售</option> <option value="1">已售罄</option> </select> 
+         </div> 
+        </div>  
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">项目介绍：</label> 
+         <div class="col-sm-10"> 
+          <script id="editor" type="text/plain" style="height:300px;"></script> 
+         </div> 
+        </div> 
+           <div class="form-group">
+               <label class="col-sm-2 control-label">项目图集(未完成)：</label> 
+               <div class="col-sm-10">
+                        <a class="fancybox" href="__PUBLIC__/img/profile_small.jpg" title="图片1">
+                            <img alt="image" src="__PUBLIC__/img/profile_small.jpg">
+                        </a>
+                    </div>
+           </div>
+        <div class="form-group"> 
+         <div class="col-sm-4 col-sm-offset-3"> 
+          <button class="btn btn-primary" type="button" onclick="save();">提交</button> 
+         </div> 
+        </div> 
+       </form> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <script src="__PUBLIC__/js/jquery.min.js?v=2.1.4"></script> 
+   <script src="__PUBLIC__/js/bootstrap.min.js?v=3.3.5"></script> 
+    <script src="__PUBLIC__/js/plugins/fancybox/jquery.fancybox.js"></script>
+   <script>
+         $(document).ready(function(){$(".fancybox").fancybox({openEffect:"none",closeEffect:"none"})});
+         
+     var ue = UE.getEditor('editor');
+     // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
+
+function save(){
+    var name=$('#p_name').val();
+    var address=$('#p_address').val();
+    var ydmj=$('#p_area_yd').val();
+    var jzmj=$('#p_area_jz').val();
+    var rongji=$('#p_rongji').val();
+    var lvhua=$('#p_lvhua').val();
+    var category=$('#p_category').val();
+    var sell=$('#p_sell').val();
+    var content=ue.getContent();
+    var imgs="adsfasdf|Asdf|Asdfa|123123";//图集
+   $.post('update',{imgs:imgs,t:1,name:name,address:address,area_yd:ydmj,area_jz:jzmj,content:content,rongji:rongji,lvhua:lvhua,category:category,sell:sell},function(d){
+       if (d==0) {
+    status("info", "添加成功！");
+    var content=ue.setContent('');
+    
+}
+   })
+}
+</script>   
+  </div>
+ </body>
+</html>
