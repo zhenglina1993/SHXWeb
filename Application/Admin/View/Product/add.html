@@ -75,20 +75,29 @@ and open the template in the editor.
           <select class="form-control" id="p_sell"> <option value="0">在售</option> <option value="1">已售罄</option> </select> 
          </div> 
         </div>  
+        <div class="form-group">
+               <label class="col-sm-2 control-label">项目图集(未完成)：</label> 
+               <div class="col-sm-10">
+<button type="button" id="j_upload_img_btn">上传图片</button>
+<ul id="upload_img_wrap"></ul>
+<!-- 加载编辑器的容器 -->
+<textarea id="uploadEditor" style="display: none;"></textarea>
+
+<!--                        <a class="fancybox" href="__PUBLIC__/img/profile_small.jpg" title="图片1">
+                            <img alt="image" src="__PUBLIC__/img/profile_small.jpg">
+                        </a>
+                     <a class="fancybox" href="__PUBLIC__/img/profile_small.jpg" title="图片1">
+                            <img alt="image" src="__PUBLIC__/img/profile_small.jpg">
+                        </a>-->
+                    </div>
+           </div>
         <div class="form-group"> 
          <label class="col-sm-2 control-label">项目介绍：</label> 
          <div class="col-sm-10"> 
           <script id="editor" type="text/plain" style="height:300px;"></script> 
          </div> 
         </div> 
-           <div class="form-group">
-               <label class="col-sm-2 control-label">项目图集(未完成)：</label> 
-               <div class="col-sm-10">
-                        <a class="fancybox" href="__PUBLIC__/img/profile_small.jpg" title="图片1">
-                            <img alt="image" src="__PUBLIC__/img/profile_small.jpg">
-                        </a>
-                    </div>
-           </div>
+          
         <div class="form-group"> 
          <div class="col-sm-4 col-sm-offset-3"> 
           <button class="btn btn-primary" type="button" onclick="save();">提交</button> 
@@ -103,7 +112,8 @@ and open the template in the editor.
    <script src="__PUBLIC__/js/bootstrap.min.js?v=3.3.5"></script> 
     <script src="__PUBLIC__/js/plugins/fancybox/jquery.fancybox.js"></script>
    <script>
-         $(document).ready(function(){$(".fancybox").fancybox({openEffect:"none",closeEffect:"none"})});
+
+    $(document).ready(function(){$(".fancybox").fancybox({openEffect:"none",closeEffect:"none"})});
          
      var ue = UE.getEditor('editor');
      // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
@@ -126,6 +136,36 @@ function save(){
     
 }
    })
+}
+
+
+var uploadEditor = UE.getEditor("uploadEditor", {
+        isShow: false,
+        focus: false,
+        enableAutoSave: false,
+        autoSyncData: false,
+        autoFloatEnabled:false,
+        wordCount: false,
+        sourceEditor: null,
+        scaleEnabled:true,
+        toolbars: [["insertimage", "attachment"]]
+    });
+uploadEditor.ready(function () {
+    // 监听插入图片
+    uploadEditor.addListener("beforeInsertImage", _beforeInsertImage);
+});
+document.getElementById('j_upload_img_btn').onclick = function () {
+    var dialog = uploadEditor.getDialog("insertimage");
+    dialog.title = '图片管理';
+    dialog.render();
+    dialog.open();
+};
+function _beforeInsertImage(t, result) {
+    var imageHtml = ''; 
+    for(var i in result){
+        imageHtml += '<li><img src="'+result[i].src+'" alt="'+result[i].alt+'" height="150"></li>';
+    }
+    document.getElementById('upload_img_wrap').innerHTML = imageHtml;
 }
 </script>   
   </div>
