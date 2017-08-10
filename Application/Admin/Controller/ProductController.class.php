@@ -33,6 +33,10 @@ class ProductController extends Controller {
             $r=$Product->where($where)->find();
             $this->assign("title","编辑项目");
             $this->assign("pro",$r);
+            $Img=D('ProductImg');
+            $where_img["pid"]=$id;
+            $imgs=$Img->where($where_img)->select();
+            $this->assign("imgs",$imgs);
         }
         $this->display();
     }
@@ -42,20 +46,47 @@ class ProductController extends Controller {
     public function update($t){
         //t: 1 add 2update
         $Product=D('Product');
-        if (t==1) {
+        
+        if ($t==1) {
             $Product->create();
             $Product->content=$_POST["content"];
             $Product->add();
+           $pid= $Product->getLastInsID();
             //echo $_POST["imgs"];
             //TODO: add imgs
+            $imgs=explode('|', $_POST["imgs"]);
+            foreach ($imgs as $item){
+                if ($item!=NULL&&$item!="") {
+                    $Img=D("ProductImg");
+                    $data["pid"]=$pid;
+                    $data["img"]=$item;
+                    //$Img->create($data);
+                    $Img->add($data);
+                }
+            }
+           // echo $imgs;
+            //dump($imgs);
             echo 200;;
         }
         else{
             $Product->create();
-            $Product->id=$_GET["id"];
+            $pid=$_GET["id"];
+            $Product->id=$pid;
             $Product->content=$_POST["content"];
             $Product->save();
             //echo $Product->getLastSql();
+            $Img=D("ProductImg");
+            $where["pid"]= $pid;
+            $Img->where($where)->delete();
+             $imgs=explode('|', $_POST["imgs"]);
+            foreach ($imgs as $item){
+                if ($item!=NULL&&$item!="") {
+                    $Img=D("ProductImg");
+                    $data["pid"]=$pid;
+                    $data["img"]=$item;
+                    $Img->add($data);
+                }
+            }
             echo 200;
         }
        

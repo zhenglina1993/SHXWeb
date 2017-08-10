@@ -85,10 +85,18 @@ and open the template in the editor.
          </div> 
         </div>  
         <div class="form-group">
-               <label class="col-sm-2 control-label">项目图集(未完成)：</label> 
+               <label class="col-sm-2 control-label">项目图集：</label> 
                <div class="col-sm-10">
 <button type="button" id="j_upload_img_btn">上传图片</button>
-<ul id="upload_img_wrap"></ul>
+<ul id="upload_img_wrap">
+    <foreach name='imgs' item='i'>
+        <li>
+            <img src="{$i.img}" height="150"><button class="btn btn-red" onclick="delImg();" type="button">
+             <i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>
+        </li>
+    </foreach>
+
+</ul>
 <!-- 加载编辑器的容器 -->
 <textarea id="uploadEditor" style="display: none;"></textarea>
 
@@ -145,7 +153,12 @@ function save(){
     var content=ue.getContent();
     var action=<if condition="$title eq '新增项目'">1<else />2</if>;
     var url=<if condition="$title eq '新增项目'">"update"<else />"update?id={$pro.id}"</if>;
-    var imgs="adsfasdf|Asdf|Asdfa|123123";//图集
+    var img_ul=document.getElementById('upload_img_wrap').getElementsByTagName('li');
+   
+    var imgs="";//图集
+     $('#upload_img_wrap').find("li").each(function(){
+        imgs+=$(this).find('img')[0].src+"|";
+    });
    $.post(url,{imgs:imgs,t:action,name:name,address:address,area_yd:ydmj,area_jz:jzmj,content:content,rongji:rongji,lvhua:lvhua,category:category,sell:sell},function(d){
        if (d==200) {
     status("info", "添加成功！");
@@ -183,9 +196,15 @@ document.getElementById('j_upload_img_btn').onclick = function () {
 function _beforeInsertImage(t, result) {
     var imageHtml = ''; 
     for(var i in result){
-        imageHtml += '<li><img src="'+result[i].src+'" alt="'+result[i].alt+'" height="150"></li>';
+        imageHtml += '<li><img src="'+result[i].src+'" alt="'+result[i].alt+'" height="150">';
+        imageHtml += '<button class="btn btn-red" onclick="delImg();" type="button"><i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>';
+        imageHtml +='</li>'
     }
     document.getElementById('upload_img_wrap').innerHTML = imageHtml;
+}
+
+function delImg(){
+  alert('删除图片');
 }
 </script>   
   </div>
