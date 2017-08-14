@@ -15,6 +15,7 @@ use Think\Controller;
 class IndexController extends Controller {
     //put your code here
     public function index() {
+       // $this->assign("session",S("admin"));
         $this->display("login");
     }
      //登录
@@ -26,7 +27,7 @@ class IndexController extends Controller {
         $condition->pwd=$p;
         $data =  $Admin->where($condition)->find();
         if ($data!=NULL) {
-            session($login,$data);
+            session('admin',$login);
             echo 200;
         }
         else{
@@ -36,8 +37,16 @@ class IndexController extends Controller {
     
 //登录成功 进入首页
     public function main(){
-       //$this->assign("username", $_GET["login"]);
-       $this->display('index');   
+        $s= session("admin");
+        echo 'sss---',$s;
+        if ($s==NULL) {
+             $this->display("login");
+        }
+        else{
+       $this->display('index');       
+        }
+//$this->assign("username", $_GET["login"]);
+        
     }
     
 //服务器信息
