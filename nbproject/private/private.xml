@@ -3,12 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/View/Index/qywh.html</file>
-            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/View/Product/table.html</file>
-            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/View/Index/index.html</file>
-            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/Controller/ProductController.class.php</file>
-            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/Controller/NewsController.class.php</file>
-            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/View/Product/add.html</file>
+            <file>file:/Users/zhangfengyang/Documents/github/SHXWeb/Application/Admin/Controller/IndexController.class.php</file>
         </group>
     </open-files>
 </project-private>

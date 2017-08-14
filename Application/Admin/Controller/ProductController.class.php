@@ -73,6 +73,7 @@ class ProductController extends Controller {
             $pid=$_GET["id"];
             $Product->id=$pid;
             $Product->content=$_POST["content"];
+            $Product->content_en=$_POST["content_en"];
             $Product->save();
             //echo $Product->getLastSql();
             $Img=D("ProductImg");

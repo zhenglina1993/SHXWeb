@@ -49,15 +49,26 @@ and open the template in the editor.
        <form class="form-horizontal m-t" id="commentForm" novalidate="novalidate"> 
         <div class="form-group"> 
          <label class="col-sm-2 control-label">项目名称：</label> 
-         <div class="col-sm-10"> 
-             
+         <div class="col-sm-10">             
              <input id="p_name" value="{$pro.name}" placeholder="请输入项目名称..." minlength="2" type="text"  class="form-control" required="" aria-required="true" />
+         </div> 
+        </div> 
+        <div class="form-group"> 
+         <label class="col-sm-2 control-label">项目名称(英)：</label> 
+         <div class="col-sm-10">             
+             <input id="p_name_en" value="{$pro.name_en}" placeholder="Please input the product name..." minlength="2" type="text"  class="form-control" required="" aria-required="true" />
          </div> 
         </div> 
         <div class="form-group"> 
          <label class="col-sm-2 control-label">地址：</label> 
          <div class="col-sm-10"> 
           <input id="p_address" value="{$pro.address}" type="text" class="form-control" placeholder="请输入项目地址..." required="" aria-required="true" /> 
+         </div> 
+        </div> 
+            <div class="form-group"> 
+         <label class="col-sm-2 control-label">地址(英)：</label> 
+         <div class="col-sm-10"> 
+          <input id="p_address_en" value="{$pro.address_en}" type="text" class="form-control" placeholder="Please input the address..." required="" aria-required="true" /> 
          </div> 
         </div> 
         <div class="form-group"> 
@@ -134,6 +145,12 @@ and open the template in the editor.
           <script id="editor" type="text/plain" style="height:300px;"></script> 
          </div> 
         </div> 
+            <div class="form-group"> 
+         <label class="col-sm-2 control-label">项目介绍(英)：</label> 
+         <div class="col-sm-10"> 
+          <script id="editor_en" type="text/plain" style="height:300px;"></script> 
+         </div> 
+        </div> 
           
 <!--        <div class="form-group"> 
          <div class="col-sm-4 col-sm-offset-3"> 
@@ -160,10 +177,14 @@ and open the template in the editor.
                ue.setContent("{$pro.content}");  
   
        }); 
+       var ue_en=UE.getEditor('editor_en');
+       ue_en.addListener("ready",function(){ue_en.setContent('{$pro.content_en}');});
 
 function save(){
     var name=$('#p_name').val();
+    var name_en=$('#p_name_en').val();
     var address=$('#p_address').val();
+    var address_en=$('#p_address_en').val();
     var ydmj=$('#p_area_yd').val();
     var jzmj=$('#p_area_jz').val();
     var rongji=$('#p_rongji').val();
@@ -171,6 +192,7 @@ function save(){
     var category=$('#p_category').val();
     var sell=$('#p_sell').val();
     var content=ue.getContent();
+    var content_en=ue_en.getContent();
     var action=<if condition="$title eq '新增项目'">1<else />2</if>;
     var url=<if condition="$title eq '新增项目'">"update"<else />"update?id={$pro.id}"</if>;
     var img_ul=document.getElementById('upload_img_wrap').getElementsByTagName('li');
@@ -179,13 +201,14 @@ function save(){
      $('#upload_img_wrap').find("li").each(function(){
         imgs+=$(this).find('img')[0].src+"|";
     });
-   $.post(url,{imgs:imgs,t:action,name:name,address:address,area_yd:ydmj,area_jz:jzmj,content:content,rongji:rongji,lvhua:lvhua,category:category,sell:sell},function(d){
+   $.post(url,{imgs:imgs,t:action,name:name,name_en:name_en,address:address,address_en:address_en,area_yd:ydmj,area_jz:jzmj,content:content,content_en:content_en,rongji:rongji,lvhua:lvhua,category:category,sell:sell},function(d){
        if (d==200) {
     status("info", "添加成功！");
     if (action==2) {
     window.location.href="{:U('Product/index')}";
 }
     var content=ue.setContent('');
+    var content_en=ue_en.setContent('');
     
 }
    })

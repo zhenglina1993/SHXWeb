@@ -34,11 +34,16 @@ class IndexController extends Controller {
             echo 400;
         }
     }
-    
+    public function signout(){
+        session('admin',null);
+        $this->redirect('Index/index');
+    }
+
+
 //登录成功 进入首页
     public function main(){
         $s= session("admin");
-        echo 'sss---',$s;
+        //echo 'sss---',$s;
         if ($s==NULL) {
              $this->display("login");
         }
