@@ -87,17 +87,20 @@ class IndexController extends Controller {
             $Kv->key="qyjs";
             $Kv->value="请在此输入企业介绍";
             $Kv->add();
-             $this->assign("content","请在此输入企业介绍");
+            $this->assign("content","请在此输入企业介绍");
+            $this->assign("content_en","please input words here..");
         }
         else{
             $this->assign("content",$r["value"]);
+            $this->assign("content_en",$r["value_en"]);
         }
         $this->display('qyjs');
     }
-    public function updateQYJS($data){
+    public function updateQYJS($data,$data_en){
         $Kv = M("Kv");
         $where["key"]="qyjs";
         $d["value"]=$data;
+        $d["value_en"]=$data_en;
         $Kv->where($where)->save($d);
         echo 200;
     }
@@ -109,19 +112,23 @@ class IndexController extends Controller {
         if ($r==NULL) {
             $Kv->create();
             $Kv->key="qywh";
-            $Kv->value="请在此输入企业文化";
+            $Kv->value="请在此输入企业文化"; 
+            $Kv->value_en="please input your content here..";
             $Kv->add();
-             $this->assign("content","请在此输入企业文化");
+            $this->assign("content","请在此输入企业文化");
+            $this->assign("content_en", "please input your content here..");
         }
         else{
             $this->assign("content",$r["value"]);
+            $this->assign("content_en",$r["value_en"]);
         }
         $this->display('qywh');
     }
-    public function updateQYWH($data){
+    public function updateQYWH($data,$data_en){
         $Kv = M("Kv");
         $where["key"]="qywh";
         $d["value"]=$data;
+        $d["value_en"]=$data_en;
         $Kv->where($where)->save($d);
         echo 200;
     }

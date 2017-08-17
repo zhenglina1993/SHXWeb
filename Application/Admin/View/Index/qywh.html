@@ -10,47 +10,37 @@
     <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
 
-    <style type="text/css">
-        div{
-            width:100%;
-        }
-    </style>
         <link href="__PUBLIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
     <link href="__PUBLIC__/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="__PUBLIC__/css/animate.min.css" rel="stylesheet">
     <link href="__PUBLIC__/css/style.min.css?v=4.0.0" rel="stylesheet">
-    
-    
-      <script src="__PUBLIC__/js/jquery.min.js?v=2.1.4"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js?v=3.3.5"></script>
-    <script src="__PUBLIC__/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="__PUBLIC__/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
-    <script src="__PUBLIC__/js/plugins/layer/layer.min.js"></script>
-    <script src="__PUBLIC__/js/hplus.min.js?v=4.0.0"></script>
-    <script type="text/javascript" src="__PUBLIC__/js/contabs.min.js"></script>
-    <script src="__PUBLIC__/js/plugins/pace/pace.min.js"></script>
+    <link href="__PUBLIC__/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 </head>
 <body>
 
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-9">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>企业文化</h5>
+                        <div class="ibox-tools">
+                            <button class="btn btn-primary btn-xs" type="button" onclick="request();">
+                                <i class="fa fa-check"></i>保存
+                            </button>
+                        </div>
                     </div>
                     <div class="ibox-content">
                          <div id="ts" />
-                       
                             <div class="form-group">
-<!--                                <label class="col-sm-2 control-label">职位：</label>-->
+                                <label class="col-sm-2 control-label">中文：</label>
                                 <div class="col-sm-12">
                                      <script id="editor" type="text/plain" style="height:300px;"></script>
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <div class="col-sm-2 col-sm-offset-9">
-                                        <button type="button" onclick="request();" class="btn btn-w-m btn-info">保  存</button>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label">英文：</label>
+                                <div class="col-sm-12">
+                                     <script id="editor_en" type="text/plain" style="height:300px;"></script>
                                 </div>
                             </div>
                     </div>
@@ -61,20 +51,20 @@
 
 </div>
 
-<!--<div id="btns">
-    <div>
-        <button onclick="getAllHtml()">获得html的内容</button>
-        <button onclick="hasContent()">判断是否有内容</button>
-    </div>
-</div>-->
 
-
+  <script src="__PUBLIC__/js/jquery.min.js?v=2.1.4"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="__PUBLIC__/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__PUBLIC__/js/plugins/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="__PUBLIC__/js/plugins/layer/layer.min.js"></script>
+    <script src="__PUBLIC__/js/hplus.min.js?v=4.0.0"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/contabs.min.js"></script>
+    <script src="__PUBLIC__/js/plugins/pace/pace.min.js"></script>
+    <script src="__PUBLIC__/js/plugins/sweetalert/sweetalert.min.js"></script>
 <script type="text/javascript">
 
-    //实例化编辑器
-    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
     var ue = UE.getEditor('editor');
-   
+   var ue_en = UE.getEditor('editor_en');
     function hasContent() {
         var arr = [];
         arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
@@ -84,18 +74,19 @@
     }
     
     function request(){
-          alert(UE.getEditor('editor').getContent());
-        $.post('updateQYWH',{data:UE.getEditor('editor').getContent()},function(data){
+         // alert(UE.getEditor('editor').getContent());
+        $.post('updateQYWH',{data:ue.getContent(),data_en:ue_en.getContent()},function(data){
            if (data==200) {
     alert('保存成功');
 }
         })
     }
     ue.addListener("ready", function () {  
-               // editor准备好之后才可以使用  
                ue.setContent("{$content}");  
-  
-       }); 
+    }); 
+    ue_en.addListener("ready", function () {  
+               ue_en.setContent("{$content_en}");  
+    });
 </script>
 </body>
 </html>
