@@ -49,9 +49,9 @@
         if (pwd.length<1) {
     return false;
 }   
-        $.post("{:U('Index/login')}",{login:login,pwd:pwd},function(data){
+        $.post("{:U('Index/login','','')}",{login:login,pwd:pwd},function(data){
                if (data==200) {
-                 window.location.href="{:U('Index/main')}?login="+login;
+                 window.location.href="{:U('Index/main','','')}?login="+login;
             }
             else{
                      alert('用户名或密码错误');
