@@ -35,17 +35,44 @@ class JobController extends Controller {
             
      function add(){
         $this->display('add');
-    }
-    
-    function save($zw,$xz,$dd,$content,$lx) {
-        $Job=M("Job");
+     }
+     
+     function edit(){
+          $id=  I("id");
+        if ($id==NULL) {
+            $this->assign("title","新增职位");
+        }
+        else{
+             $this->assign("title","编辑职位");
+          $Job=M("Job");
+         $where["id"]=$id;
+         $r=$Job->where($where)->find();
+         $this->assign("job",$r);
+        }
+        $this->display('add');
+       
+     }
+             
+    function save($zw,$zw_en,$xz,$dd,$dd_en,$content,$content_en,$lx) {
+        $id=$_GET["id"];
+        $Job=D("Job");
         $Job->create();
         $Job->job=$zw;
+        $Job->job_en=$zw_en;
         $Job->address=$dd;
+        $Job->address_en=$dd_en;
         $Job->category=$lx;
         $Job->content=$content;
+        $Job->content_en=$content_en;
         $Job->money=$xz;
-        $Job->add();
+        if ($id==NULL) {    
+            $Job->add(); 
+        }
+        else{
+            $Job->id=$id;
+            $Job->save();
+        }
+        
         echo 200;
     }
     

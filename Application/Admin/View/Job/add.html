@@ -6,25 +6,31 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>{$title}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="__PUBLIC__/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
     <link href="__PUBLIC__/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
     <link href="__PUBLIC__/css/animate.min.css" rel="stylesheet">
     <link href="__PUBLIC__/css/style.min.css?v=4.0.0" rel="stylesheet">
-    <link href="__PUBLIC__/status/status.css" rel="stylesheet">
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/status/status.js"></script>
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+     <link href="__PUBLIC__/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!--<link href="__PUBLIC__/status/status.css" rel="stylesheet">-->
+    
     </head>
     <body>
        <div class="row">
             <div class="col-sm-9">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>添加职位</h5>
+                        <h5>{$title}</h5>
+                         <div class="ibox-tools">
+             <button class="btn btn-primary btn-xs" type="button" onclick="save();"><i class="fa fa-check"></i>保存
+             </button>
+      <if condition="$title eq '新增职位'"><else />
+            <a href="{:U('Job/index')}" class="btn btn-primary btn-xs">返回列表</a>
+        
+      </if>
+        </div>
                     </div>
                     <div class="ibox-content">
                          <div id="ts" />
@@ -32,13 +38,25 @@ and open the template in the editor.
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">职位：</label>
                                 <div class="col-sm-9">
-                                    <input id="p_zw" name="name" placeholder="请输入职位..." minlength="2" type="text" class="form-control" required="" aria-required="true">
+                                    <input id="p_zw" name="name" value="{$job.job}" placeholder="请输入职位..." minlength="2" type="text" class="form-control" required="" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">职位(英)：</label>
+                                <div class="col-sm-9">
+                                    <input id="p_zw_en" name="name" value="{$job.job_en}" placeholder="job..." minlength="2" type="text" class="form-control" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">地点：</label>
                                 <div class="col-sm-9">
-                                    <input id="p_dd" type="text" class="form-control" placeholder="请输入工作地点,如:浙江杭州"   required="" aria-required="true">
+                                    <input id="p_dd" type="text" value="{$job.address}" class="form-control" placeholder="请输入工作地点,如:浙江杭州"   required="" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">地点(英)：</label>
+                                <div class="col-sm-9">
+                                    <input id="p_dd_en" type="text" value="{$job.address_en}" class="form-control" placeholder="Address..."   required="" aria-required="true">
                                 </div>
                             </div>
                          
@@ -55,13 +73,19 @@ and open the template in the editor.
                           <div class="form-group">
                                 <label class="col-sm-2 control-label">薪资：</label>
                                 <div class="col-sm-9">
-                                    <input id="p_xz" name="name" placeholder="请输入薪资,如:8K-10K" minlength="2" type="text" class="form-control" required="" aria-required="true">
+                                    <input id="p_xz" name="name" value="{$job.money}" placeholder="请输入薪资,如:8K-10K" minlength="2" type="text" class="form-control" required="" aria-required="true">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">职责要求：</label>
                                 <div class="col-sm-9">
-                                    <script id="editor" type="text/plain" style="height:300px;"></script>
+                                    <script id="editor" type="text/plain" ></script>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">职责要求(英)：</label>
+                                <div class="col-sm-9">
+                                    <script id="editor_en" type="text/plain" ></script>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -76,28 +100,54 @@ and open the template in the editor.
         </div>
          <script src="__PUBLIC__/js/jquery.min.js?v=2.1.4"></script>
     <script src="__PUBLIC__/js/bootstrap.min.js?v=3.3.5"></script>
-<!--    <script src="js/content.min.js?v=1.0.0"></script>
-    <script src="js/plugins/validate/jquery.validate.min.js"></script>
-    <script src="js/plugins/validate/messages_zh.min.js"></script>-->
+<!--<script type="text/javascript" charset="utf-8" src="__PUBLIC__/status/status.js"></script>-->
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="__PUBLIC__/js/plugins/sweetalert/sweetalert.min.js"></script>
 <script>
-     var ue = UE.getEditor('editor');
-     // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
-
+     var ue = UE.getEditor('editor',{
+          autoHeight: true,
+    toolbars: [
+    ['fullscreen', 'source', 'undo', 'redo'],
+    ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+    ] 
+    });
+      var ue_en = UE.getEditor('editor_en',{
+           autoHeight: true,
+    toolbars: [
+    ['fullscreen', 'source', 'undo', 'redo'],
+    ['bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc']
+    ]   
+    });
+    if (document.title=="编辑职位") {
+     ue.addListener("ready",function(){ue.setContent('{$job.content}');});
+     ue_en.addListener("ready",function(){ue_en.setContent('{$job.content_en}');});
+    }
+    
 function save(){
     var zw=$('#p_zw').val();
+    var zw_en=$('#p_zw_en').val();
     var dd=$('#p_dd').val();
+    var dd_en=$('#p_dd_en').val();
    var xz=$('#p_xz').val();
     var lx=$('#p_lx').val();
     var content=ue.getContent();
-   $.post('save',{zw:zw,dd:dd,xz:xz,lx:lx,content:content},function(d){
-       if (d==0) {
-    //alert('添加成功.');
-    status("info", "添加成功！");
+    var content_en=ue_en.getContent();
+    var url="save";
+    if (document.title=="编辑职位") {
+        url="save?id="+{$job.id};
+    }
+   $.post(url,{zw:zw,zw_en:zw_en,dd:dd,dd_en:dd_en,xz:xz,lx:lx,content:content,content_en:content_en},function(d){
+       if (d==200) {
+        swal({title:"太帅了",text:document.title=="编辑职位"?"成功更新了职位信息":"又发布了一个新的职位",type:"success"});
     $('#p_zw').val('');
     $('#p_dd').val('');
+    $('#p_zw_en').val('');
+    $('#p_dd_en').val('');
     $('#p_xz').val('');
     var content=ue.setContent('');
-    
+    var content_en=ue_en.setContent('');
 }
    })
 }
