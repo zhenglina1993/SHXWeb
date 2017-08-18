@@ -34,6 +34,7 @@ class JobController extends Controller {
     }
             
      function add(){
+         $this->assign("title", "新增职位");
         $this->display('add');
      }
      

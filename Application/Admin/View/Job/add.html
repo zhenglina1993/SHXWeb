@@ -136,7 +136,8 @@ function save(){
     var content_en=ue_en.getContent();
     var url="save";
     if (document.title=="编辑职位") {
-        url="save?id="+{$job.id};
+        console.log(document.title);
+        url="save?id={$job.id}";
     }
    $.post(url,{zw:zw,zw_en:zw_en,dd:dd,dd_en:dd_en,xz:xz,lx:lx,content:content,content_en:content_en},function(d){
        if (d==200) {
