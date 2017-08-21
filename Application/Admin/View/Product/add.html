@@ -27,7 +27,24 @@ and open the template in the editor.
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
 	<!--<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>-->
 	<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-
+<style type="text/css">
+  #j_upload_img_btn ul{
+    list-style: none;
+    padding:24px 0 0;
+    margin: 0;
+  }
+  #j_upload_img_btn ul li{
+    width: 180px;
+    margin-right: 12px;
+    height: auto;
+    float: left;
+  }
+  #j_upload_img_btn ul li img{
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+</style>
  </head> 
  <body> 
   <div class="row"> 
@@ -118,12 +135,12 @@ and open the template in the editor.
         <div class="form-group">
                <label class="col-sm-2 control-label">项目图集：</label> 
                <div class="col-sm-10">
-<button type="button" id="j_upload_img_btn">上传图片</button>
-<ul id="upload_img_wrap">
+<button type="button" id="j_upload_img_btn" >上传图片</button>
+<ul id="upload_img_wrap" style='margin: 0;padding: 24px 0 0;list-style: none;'>
     <foreach name='imgs' item='i'>
         <li>
             <img src="{$i.img}" height="150"><button class="btn btn-red" onclick="delImg();" type="button">
-             <i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>
+             <i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold" style=''>删除</span></button>
         </li>
     </foreach>
 
