@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="keywords" content="海南森华信实业有限公司">
+    <title>海南森华信实业有限公司</title>
+	<link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/web/css/animate.css">
+     <script src="__PUBLIC__/web/js/jquery-1.9.1.min.js"></script>
+    <script src="__PUBLIC__/web/js/style.js"></script>
+</head>
+<body>
+    <include file="./Application/Home/View/Index/header.html" title="joinusfrom" />
+	<!--<div id="pcMunu"></div>-->
+	<div class='contain'>
+<div class="joinfrombanner">
+</div>
+<div class="joinfromWrap1">
+	<div class="aboutcontainer">
+		<div class="joinfromTitle">
+			<h4>申请职位</h4>
+			<h2>{$job}</h2>
+			<p>带<span>*</span>的栏目为必填项，请认真填写</p>
+		</div>
+		<div class="joinfromtable">
+			<table class='workTable ' cellpadding='0' cellspacing='0'>
+				<tr>
+					<td class='workTableTxt' style='width:110px;padding-right:42px;'>姓名<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的真实姓名'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>性别<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="radio" ><span>男</span><input type="radio" ><span>女</span></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>年龄<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的年龄'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>婚姻状况<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="radio" ><span>已婚</span><input type="radio" ><span>未婚</span></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>最高学历<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的真实姓名'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>教育经历<span class='tip'>*</span></td>
+					<td class='workTablebox'><textarea placeholder="描述你的教育经历.......（300字内）"></textarea></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>工作经历<span class='tip'>*</span></td>
+					<td class='workTablebox'><textarea placeholder='描述你的工作经历.......（300字内）'></textarea></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>联系地址<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的联系地址'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>手机号码<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的手机号码，方便我们与你取得联系'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>电子邮箱<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的电子邮箱，邀请邮件会发送至该邮箱'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'>QQ号码<span class='tip'>*</span></td>
+					<td class='workTablebox'><input type="text" placeholder='填写你的QQ号码'></td>
+				</tr>
+				<tr>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'></td>
+					<td class='workTablebox'><input type="button" value='提交申请'></td>
+				</tr>	
+				<tr class='returnlist'>
+					<td  class='workTableTxt' style='width:110px;padding-right:42px;'></td>
+					<td class='workTablebox '><a href="{:U('Index/joinus','','')}"> < 返回职位列表</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+<!-- ／主体 -->
+  <include file="./Application/Home/View/Index/footer.html" />
+    </body>
+</html>

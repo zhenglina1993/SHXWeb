@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="keywords" content="海南森华信实业有限公司">
+    <title>海南森华信实业有限公司</title>
+	<link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/web/css/animate.css">
+     <script src="__PUBLIC__/web/js/jquery-1.9.1.min.js"></script>
+    <script src="__PUBLIC__/web/js/style.js"></script>
+</head>
+<body>
+    <include file="./Application/Home/View/Index/header.html" title="joinus" />
+	<!--<div id="pcMunu"></div>-->
+	<div class='contain'>
+		<div class="joinusbanner">
+			<h2>加入我们</h2>
+			<p>以下职位长期招聘，欢迎投递简历至：<a href="">moore.michelle@yahoo.com</a></p>
+		</div>
+		<div class="joinWrap1">
+			<div class="aboutcontainer">
+				<div class="fl TotalTxt">共 {$count} 个职位</div>
+				<div class="fr changeselect">
+					<select>
+					  <option>选择招聘类型</option>
+					</select>
+					<select>
+					  <option>选择工作地点</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="joinWrap2">
+			<div class="aboutcontainer">
+				<table class='workTable ' cellpadding='0' cellspacing='0'>
+				  	<tr>
+				   		<th>职位</th>
+				  		<th style='width:180px;'>类型</th>
+				  		<th style='width:170px;'>地点</th>
+				  		<th style='width:150px;'>薪资</th>
+				  		<th style='width:110px;'>应聘</th>
+				  	</tr>
+                                        <foreach name='list' item='item'>
+				  	<tr>
+				    	<td><span class='workJob'>{$item.job}</span></td>
+				    	<td>
+                                        <if condition='$item.category eq 1'>
+                                            社会招聘
+                                            <else />校园招聘
+                                        </if>
+                                        </td>
+				    	<td>{$item.address}</td>
+				    	<td><span class='workPrice'>{$item.money}</span></td>
+				    	<td><a href="{:U('Index/joinusfrom','','')}?job={$item.job}" class='workIn'>我要应聘</a></td>
+				    </tr>
+				    <tr>
+				    	<td colspan="5" class='workInfo hide'>
+				    		{$item.content}
+				    	</td>
+				    </tr>
+                                        </foreach>
+				   
+				</table>
+				
+			</div>
+		</div>
+	</div>
+	<!-- ／主体 -->
+    <include file="./Application/Home/View/Index/footer.html" />
+    <script type="text/javascript">
+		$(function  () {
+			joinshow ();
+		})
+	</script>
+</body>
+</html>

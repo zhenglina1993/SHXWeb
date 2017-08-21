@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="keywords" content="海南森华信实业有限公司">
+    <title>海南森华信实业有限公司</title>
+	<link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/web/css/animate.css">
+    <link rel="stylesheet" href="__PUBLIC__/web/css/swiper.min.css">
+     <script src="__PUBLIC__/web/js/jquery-1.9.1.min.js"></script>
+    <script src="__PUBLIC__/web/js/swiper.min.js"></script>
+    <script src="__PUBLIC__/web/js/style.js"></script>
+    <style type="text/css">
+	body{
+		background: #f5f5f5;
+	}
+</style>
+</head>
+<body>
+    <include file="./Application/Home/View/Index/header.html" title="landinfo" />
+	<!--<div id="pcMunu"></div>-->
+	<div class='contain'>
+<div class="probanner2"></div>
+<div class="landinfoWrap1">
+	<div class="aboutcontainer">
+		<div class="landinfoLeft">
+			<div class="landinfoLeftTop">
+				<h2>{$info.name}</h2>
+				<p>{$info.address}</p>
+			</div>
+			<div class="landinfoLeftCenter">
+				<p><b>用地面积：</b>{$info.area_yd} ㎡</p>
+				<p><b>建筑面积：</b>{$info.area_jz} ㎡</p>
+				<p><b>容积率：</b>{$info.rongji}</p>
+				<p><b>绿化率：</b>{$info.lvhua}%</p>
+				<p><b>建筑类型：</b>
+                                {$info.category}
+                                </p>
+			</div>
+			<div class="landinfoLeftBottom">
+                            <input type="button" value='{$info["sell"]==0?"在售":"已售罄"}'>
+			</div>
+		</div>
+		<div class="landinfoRight">
+			 <div class="swiper-container">
+		        <div class="swiper-wrapper">
+                            <foreach name="imgs" item="item">
+		            <div class="swiper-slide" >
+		            	<img src="{$item.img}" alt="">
+		            </div>
+                            </foreach>
+		        </div>
+		        <div class="swiper-pagination"></div>
+		        <div class="swiper-button-prev"></div>
+    			<div class="swiper-button-next"></div>
+
+		    </div>
+		</div>
+	</div>
+</div>
+<div class="landinfoWrap2">
+	<div class="aboutcontainer">
+		<div class="landinfo2mod">
+			<div class="landinfo2modHead">
+				<h2 class='fl'>项目介绍</h2>
+				<p class='fr'>关注公众号了解项目信息</p>
+			</div>
+			<div class="landinfo2modCount">
+                            {$info.content}
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- ／主体 -->
+   <include file="./Application/Home/View/Index/footer.html" />
+
+
+
+<script>
+	 var swiper = new Swiper('.swiper-container', {
+	 	loop: true,
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+   		prevButton: '.swiper-button-prev',
+        paginationClickable: true
+    });
+</script>
+</body>
+</html>

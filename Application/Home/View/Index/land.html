@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="keywords" content="海南森华信实业有限公司">
+    <title>海南森华信实业有限公司</title>
+	<link rel="stylesheet" href="__PUBLIC__/web/css/style.css">
+    <link rel="stylesheet" href="__PUBLIC__/web/css/animate.css">
+     <script src="__PUBLIC__/web/js/jquery-1.9.1.min.js"></script>
+    <script src="__PUBLIC__/web/js/style.js"></script>
+    <style type="text/css">
+		body{
+			background: #f5f5f5;
+		}
+	</style>
+</head>
+<body>
+    <include file="./Application/Home/View/Index/header.html" title="land" />
+	<!--<div id="pcMunu"></div>-->
+	<div class='contain'>
+		<div class="probanner1">
+			<h2>项目展示</h2>
+		</div>
+		<div class="proWrap1">
+			<div class="aboutcontainer">
+				<div class="profilter">
+					<select>
+						<option>项目地点</option>
+					</select>
+					<select>
+						<option>价格区间</option>
+					</select>
+					<select>
+						<option>户型</option>
+					</select>
+					<select>
+						<option>面积</option>
+					</select>
+					<input type="button" value='筛选项目'>
+				</div>
+			</div>
+		</div>
+		<div class="proWrap2">
+			<div class="aboutcontainer">
+				<ul>
+                                    <foreach name='list' item='item'>
+					<li>
+						<a href="{:U('index/landinfo','','')}?id={$item.id}">
+							<div class="prolistImg">
+								<div class="prolistinfo">
+									<div class="prolistinfobox">
+										<h2>{$item.name}</h2>
+										<div class="line"></div>
+										<p>建面 {$item.area_jz}m²</p>
+									</div>
+								</div>
+								<div class="prolistAdd">{$item.address}</div>
+								<img src="{$item.id|getProductImg}" alt="">
+							</div>
+							<div class="prolistTxt">
+								<span class='fl'>
+                                                                    <b>
+                                                                        <if condition='$item.sell eq 0'>
+                                                                           在售
+                                                                           <else />
+                                                                           已售罄
+                                                                        </if>
+                                                                </span>
+								<span class='fr'>{$item.category} </span>
+							</div>
+						</a>
+					</li>
+                                    </foreach>
+				</ul>
+			</div>
+		</div>
+		<div class="proWrap3">
+			<div class="aboutcontainer">
+				<div class="prowrap3Left">
+					<h2>项目分布</h2>
+					<p>海口：花开四季、御景名城、红城湖国际广场、白沙门温泉度假村、财富中心、钻石水岸、华荣府</p>
+					<p>屯昌：水晶公园</p>
+					<p>万宁：天赐良缘</p>
+					<p>保亭：山语泉</p>
+					<p>临高：半岛阳光</p>
+					<p>临沧：凤庆禅茶文化庄园、凤庆特色小镇</p>
+					<p>南京：鸿仁名居</p>
+				</div>
+				<div class="phonemap" >
+					<img src="__PUBLIC__/web/images/phonemap.png" alt="">
+				</div>
+				<div class="prowrap3Right">
+					<div class="proAdd1">
+						<img src="__PUBLIC__/web/images/promapadd.png" alt="">
+						<div class="cir"></div>
+						<div class="cir1"></div>
+						<div class="proaddName">临高</div>
+					</div>
+					<div class="proAdd2">
+						<img src="__PUBLIC__/web/images/promapadd.png" alt="">
+						<div class="cir"></div>
+						<div class="cir1"></div>
+						<div class="proaddName">海口</div>
+					</div>
+					<div class="proAdd3">
+						<img src="__PUBLIC__/web/images/promapadd.png" alt="">
+						<div class="cir"></div>
+						<div class="cir1"></div>
+						<div class="proaddName">屯昌</div>
+					</div>
+					<div class="proAdd4">
+						<img src="__PUBLIC__/web/images/promapadd.png" alt="">
+						<div class="cir"></div>
+						<div class="cir1"></div>
+						<div class="proaddName">临沧</div>
+					</div>
+					<div class="proAdd5">
+						<img src="__PUBLIC__/web/images/promapadd.png" alt="">
+						<div class="cir"></div>
+						<div class="cir1"></div>
+						<div class="proaddName">万宁</div>
+					</div>
+					<div class="proAdd6">
+						<img src="__PUBLIC__/web/images/promapadd.png" alt="">
+						<div class="cir"></div>
+						<div class="cir1"></div>
+						<div class="proaddName">保亭</div>
+					</div>
+					<img src="__PUBLIC__/web/images/promap.png" alt="" class='proAddbg'>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ／主体 -->
+   <include file="./Application/Home/View/Index/footer.html" />
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
