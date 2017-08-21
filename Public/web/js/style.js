@@ -1,5 +1,5 @@
 $(function  () {
-	headMenu ();
+	headMenu (); 
 	footer ();
 	sltPage ();
 	phoneMenu ();
