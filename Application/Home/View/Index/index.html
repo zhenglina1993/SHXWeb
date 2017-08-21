@@ -83,16 +83,18 @@
     <!-- 项目列表 -->
     <div class="index_ProjectList">
         <ul>
+            <foreach name="list" item="item">
             <li>
-                <a href="{:U('Index/landinfo','','')}">
+                <a href="{:U('index/landinfo','','')}?id={$item.id}">
                 <div class="imgwrap">
-                    <img src="__PUBLIC__/web/images/prodectimg1.png" alt="">    
+                    <img src="{$item.id|getProductImg}" alt="">    
                 </div>
-                <h2>云南凤庆禅茶文化庄园</h2>
-                <p>因地制宜开发的以“禅”和“茶”为主题，集高端主题酒店、精品茶叶加工、农业观光旅游的综合型项目。</p>
+                <h2>{$item.name}</h2>
+                <p> {$item.content|strip_tags}</p>
                 </a>
             </li>
-             <li>
+            </foreach>
+<!--             <li>
                 <a href="{:U('Index/landinfo','','')}">
                 <div class="imgwrap">
                     <img src="__PUBLIC__/web/images/img.png" alt="">    
@@ -109,34 +111,8 @@
                 <h2>云南凤庆禅茶文化庄园</h2>
                 <p>因地制宜开发的以“禅”和“茶”为主题，集高端主题酒店、精品茶叶加工、农业观光旅游的综合型项目。</p>
                 </a>
-            </li>
-             <li>
-                <a href="{:U('Index/landinfo','','')}">
-                <div class="imgwrap">
-                    <img src="__PUBLIC__/web/images/img.png" alt="">    
-                </div>
-                <h2>云南凤庆禅茶文化庄园</h2>
-                <p>因地制宜开发的以“禅”和“茶”为主题，集高端主题酒店、精品茶叶加工、农业观光旅游的综合型项目。</p>
-                </a>
-            </li>
-             <li>
-                <a href="landinfo.html">
-                <div class="imgwrap">
-                    <img src="__PUBLIC__/web/images/img.png" alt="">    
-                </div>
-                <h2>云南凤庆禅茶文化庄园</h2>
-                <p>因地制宜开发的以“禅”和“茶”为主题，集高端主题酒店、精品茶叶加工、农业观光旅游的综合型项目。</p>
-                </a>
-            </li>
-             <li class='clear_mar'>
-                <a href="landinfo.html">
-                <div class="imgwrap">
-                    <img src="__PUBLIC__/web/images/img.png" alt="">    
-                </div>
-                <h2>云南凤庆禅茶文化庄园</h2>
-                <p>因地制宜开发的以“禅”和“茶”为主题，集高端主题酒店、精品茶叶加工、农业观光旅游的综合型项目。</p>
-                </a>
-            </li>
+            </li>-->
+            
         </ul>
         <div class="index_ProjectListmore"><a href="{:U('Index/land','','')}">查看全部项目</a></div>
     </div>
@@ -180,46 +156,18 @@
     <div class="index_new">
         <h2 class='Title'>新闻动态</h2>
         <ul>
+            <foreach name="news" item="item" key="i">
             <li class=' fl'>
-                <a href="{:U('Index/newinfo','','')}">
+                <a href="{:U('Index/newinfo','','')}?id={$item.id}">
                 <div class="newDate">
-                    <span class='years'>2017-08</span><span class='data'>12</span>
+                    <span class='years'>{$item.create_dt|substr=0,7}</span><span class='data'>{$item.create_dt|substr=8,2}</span>
                 </div>
                 <div class="newNextico"></div>
-                <div class="newTitle">海南推动非户籍人口城镇落户</div>
-                <div class="newCount">近日，省政府办公厅印发《海南省推动非户籍人口在城镇落户实施方案》。根据方案，我省将进一步拓宽落户通道。</div>
+                <div class="newTitle">{$item.title}</div>
+                <div class="newCount">{$item.content|strip_tags}</div>
                 </a>
             </li>
-            <li class='fr'>
-                <a href="{:U('Index/newinfo','','')}">
-                <div class="newDate">
-                    <span class='years'>2017-08</span><span class='data'>12</span>
-                </div>
-                <div class="newNextico"></div>
-                <div class="newTitle">海南推动非户籍人口城镇落户</div>
-                <div class="newCount">近日，省政府办公厅印发《海南省推动非户籍人口在城镇落户实施方案》。根据方案，我省将进一步拓宽落户通道。</div>
-                </a>
-            </li>
-            <li class='fl'>
-                <a href="newinfo.html">
-                <div class="newDate">
-                    <span class='years'>2017-08</span><span class='data'>12</span>
-                </div>
-                <div class="newNextico"></div>
-                <div class="newTitle">海南推动非户籍人口城镇落户</div>
-                <div class="newCount">近日，省政府办公厅印发《海南省推动非户籍人口在城镇落户实施方案》。根据方案，我省将进一步拓宽落户通道。</div>
-                </a>
-            </li>
-            <li class='fr'>
-                <a href="newinfo.html">
-                <div class="newDate">
-                    <span class='years'>2017-08</span><span class='data'>12</span>
-                </div>
-                <div class="newNextico"></div>
-                <div class="newTitle">海南推动非户籍人口城镇落户</div>
-                <div class="newCount">近日，省政府办公厅印发《海南省推动非户籍人口在城镇落户实施方案》。根据方案，我省将进一步拓宽落户通道。</div>
-                </a>
-            </li>
+            </foreach>
         </ul>
         <div class="index_ProjectListmore"><a href="{:U('Index/news','','')}">更多新闻</a></div>
     </div>

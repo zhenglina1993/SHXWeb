@@ -16,6 +16,12 @@ use Think\Controller;
 class IndexController extends Controller{
     //index
     public function index(){
+        $Dao=D('Product');
+        $r=$Dao->order('\'order\' desc')->limit(6)->select();
+        $this->assign("list", $r);
+         $DaoNews=D('News');
+        $news=$DaoNews->order('id desc')->limit(4)->select();
+        $this->assign("news", $news);
         $this->display();
     }
     //企业介绍
@@ -88,13 +94,49 @@ class IndexController extends Controller{
     public function medicine(){
         $this->display();
     }
+    //新闻详情
     public function newinfo(){
+        $id=I("id");
+        $Dao=D('News');
+        $where["id"]=$id;
+        $Dao->where($where)->setInc('readnum');
+        $r=$Dao->where($where)->find();
+        $pre=$Dao->where('id>'.$id.' and category=(select category from jh_news where id='.$id.')')->order('id')->find();
+        $next=$Dao->where('id<'.$id.' and category=(select category from jh_news where id='.$id.')')->order('id desc')->find();
+       // echo $Dao->getLastSql();
+        $this->assign("info", $r);
+        $this->assign("pre", $pre);
+        $this->assign("next", $next);
         $this->display();
     }
+    //集团资讯
     public function news(){
+        $p=I('p');
+        $s=I('s');
+        if ($p==NULL) {
+            $p=1;
+        }
+        if ($s==NULL) {
+            $s=100;
+        }
+        $Dao=D('News');
+        $r=$Dao->where('category = 2')->order('id desc')->limit(($p-1)*$s.','.($p*$s))->select();
+        $this->assign("list", $r);
         $this->display();
     }
+    //行业资讯
     public function newsindustry(){
+         $p=I('p');
+        $s=I('s');
+        if ($p==NULL) {
+            $p=1;
+        }
+        if ($s==NULL) {
+            $s=100;
+        }
+        $Dao=D('News');
+        $r=$Dao->where('category = 1')->order('id desc')->limit(($p-1)*$s.','.($p*$s))->select();
+        $this->assign("list", $r);
         $this->display();
     }
     public function search(){

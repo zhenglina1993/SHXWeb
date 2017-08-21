@@ -131,14 +131,13 @@ function save(){
         return false;
     }
     var img=$('#img').attr('src');
-    if (img=="undefined") {
+    if (img==undefined) {
          console.log('未上传图片');
     return false;
 }
     console.log("img:"+img);
     var category=$('#cb_category').val();
     var content=ue.getContent();
-    
    $.post('save',{title:title,source:source,img:img,category:category,content:content},function(d){
        if (d==0) {
     //alert('添加成功.');

@@ -30,14 +30,18 @@ class NewsController extends Controller {
         $this->display('add');
     }
     
-    function save($title,$source,$img,$content,$category) {
+    function save($title,$source,$content,$category) {
+        
         $News=M("News");
         $News->create();
         $News->title=$title;
         $News->source=$source;
         $News->category=$category;
         $News->content=$content;
-        $News->img=$img;
+        $img=$_POST["img"];
+        if ($img!=NULL) {
+            $News->img=$img;
+        }
         $News->add();
         echo 0;
     }
