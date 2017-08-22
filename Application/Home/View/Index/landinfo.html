@@ -39,7 +39,12 @@
                                 </p>
 			</div>
 			<div class="landinfoLeftBottom">
-                            <input type="button" value='{$info["sell"]==0?"在售":"已售罄"}'>
+                            <!-- <input type="button" value='{$info["sell"]==0?"在售":"已售罄"}'> -->
+                            <if condition='$item.sell eq 0'>
+                            	<input type="button" value='在售' style='background-color: #bf9d5a;'>
+                                    <else />
+                                     <input type="button" value='已售罄'>
+                            </if>
 			</div>
 		</div>
 		<div class="landinfoRight">

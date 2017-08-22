@@ -12,119 +12,13 @@ $(function  () {
 })
 //头部菜单
 function headMenu () {
-//	var pcmunu=$("<div class='headerWrap'>"+
-//			"<div class='header'>"+
-//			"<div class='logo fl' >"+
-//			"</div>"+
-//			"<div class='phoneMenu'>"+
-//			"<span></span>"+
-//			"<span></span>"+
-//			"<span></span>"+
-//			"</div>"+
-//			"<div class='search fr'>"+
-//			"<a href='search.html'></a>"+
-//			"</div>"+
-//			"<div class='headertab  fr' >"+
-//			"<ul>"+
-//			"<li><h2><a href='index.html'>首页</a></h2></li>"+
-//			"<li>"+
-//			"<h2 class='active'><a>关于我们</a></h2>"+
-//			"<dl>"+
-//			"<dd><a href='about.html'>企业介绍</a></dd>"+
-//			"<dd><a href='about1.html'>企业文化</a></dd>"+
-//			"<dd><a href='about2.html'>管理团队</a></dd>"+
-//			"<dd><a href='about3.html'>企业年制</a></dd>"+
-//			"</dl>"+
-//			"</li>"+
-//			"<li>"+
-//			"<h2><a >新闻中心</a></h2>"+
-//			"<dl>"+
-//			"<dd><a href='news.html'>集团新闻</a> </dd>"+
-//			"<dd><a href='newsindustry.html'>行业新闻</a> </dd>"+
-//			"</dl>"+
-//			"<li>"+
-//			"<h2><a >产品服务</a></h2>"+
-//			"<dl>"+
-//			"<dd><a href='land.html'>森华信地产</a></dd>"+
-//			"<dd><a href='marketing.html'>营销策划</a></dd>"+
-//			"<dd><a href='travel.html'>生态旅游</a></dd>"+
-//			"<dd><a href='medicine.html'>口腔医疗</a></dd>"+
-//			"</dl>"+
-//			"</li>"+
-//			"<li>"+
-//			"<h2><a>加入我们</a></h2>"+
-//			"<dl>"+
-//			"<dd><a href='idea.html'>人才理念</a> </dd>"+
-//			"<dd><a href='joinus.html'>我要应聘</a> </dd>"+
-//			"</dl>"+
-//			"</li>"+
-//			"<li><h2><a href='contact.html'>联系我们</a></h2></li>"+
-//			"</ul>"+
-//			"</div>"+
-//	  		"</div> "+
-//  			"</div>");
-//	$("#pcMunu").html(pcmunu);
 }
 // 底部菜单
 function footer () {
-//	var footer=$("<div class='footerWrap'>"+
-//		"<div class='footer'>"+
-//		"<div class='footerTop '>"+
-//		"<div class='footerLeft fl'>"+
-//		"<img src='images/logo.png' alt=''>"+
-//		"</div>"+
-//		"<div class='footerCenter fl'>"+
-//		"<dl>"+
-//		"<dt>关于我们</dt>"+
-//		"<dd><a href='about.html>企业介绍</a></dd>"+
-//		"<dd><a href='about1.html'>企业文化</a></dd>"+
-//		"<dd><a href='about2.html'>管理团队</a></dd>"+
-//		"<dd><a href='about3.html'>企业年制</a></dd>"+
-//		"</dl>"+
-//		"<dl>"+
-//		"<dt>新闻中心</a></dt>"+
-//		"<dd><a href='news.html'>集团新闻</a></dd>"+
-//		"<dd><a href='newsindustry.html'>行业新闻</a></dd>"+
-//		"</dl>"+
-//		"<dl>"+
-//		"<dt>产品服务</a></dt>"+
-//		"<dd><a href='land.html'>森华信地产</a></dd>"+
-//		"<dd><a href='marketing.html'>营销策划</a></dd>"+
-//		"<dd><a href='travel.html'>生态旅游</a></dd>"+
-//		"<dd><a href='medicine.html'>口腔医疗</a></dd>"+
-//		"</dl>"+
-//		"<dl>"+
-//		"<dt>加入我们</a></dt>"+
-//		"<dd><a href='idea.html'>人才理念</a></dd>"+
-//		"<dd><a href='joinus.html'>我要应聘</a></dd>"+
-//		"</dl>"+
-//		"</div>"+
-//		"<div class='footerRight fr'>"+
-//		"<p><span class='fl'>客服热线</span></p>"+
-//		"<h2>0898-66788686</h2>"+
-//		"<p><span class='fl'>公司地址</span><a href='http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D%E6%B5%B7%E5%8F%A3%E6%B5%B7%E5%8D%97%E6%A3%AE%E5%8D%8E%E4%BF%A1%E5%AE%9E%E4%B8%9A%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8' class='fr'>在地图上查看</a></p>"+
-//		"<h3>海口市海甸岛四东路1号环岛大厦14楼</h3> "+
-//		"</div>"+
-//		"</div>"+
-//		"<div class='Line'></div>"+
-//		"<div class='footerBottom'>"+
-//		"<p class='fl'><span>Copyright © 2017, XXXX Co., Ltd. All Rights Reserved. 海南森华信集团&海南森华信实业有限公司</span><span>琼ICP备13000622号-2 </span></p>"+
-//		"<div class='fr language'>	"+	
-//		"<a class='english'><i>英文</i></a>"+
-//		"<a class='china'><i>中文</i></a>"+
-//		"</div>"+
-//		"</div>"+
-//		"</div>"+
-//		"</div>");	
-//	$('#footer').html(footer);
+
 }
 //获取打开的是哪个页面
  function GetPage() {
-//    var strUrl = window.location.href;
-//    var lastIndex = strUrl.lastIndexOf('/');
-//    var indexofhtml = strUrl.indexOf('.html');
-//    var Page = strUrl.substring(lastIndex + 1, indexofhtml);
-//    return Page;
 return HEADER;
 }
 // 头部添加选中样式
