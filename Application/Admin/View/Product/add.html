@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
  <head> 
   <title>TODO supply a title</title> 
@@ -259,8 +264,10 @@ function _beforeInsertImage(t, result) {
 }
 
 function delImg(){
-  //alert('删除图片');
-  $(this).closest("li").remove();
+  $(".delImg").click(function  (argument) {
+      // body...
+      $(this).parent("li").remove();
+    })
 }
 </script>   
   </div>

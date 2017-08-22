@@ -30,7 +30,7 @@
                     <div class="ibox-title">
                         <h5 class='pull-left'>{$title}</h5>
                         <div class=" pull-right ">
-                            <button class="btn btn-primary" type="button" onclick='window.location.reload();'><i class="fa  fa-refresh"></i> 刷新</button>
+                            <button class="btn btn-primary" type="button" onclick='reload();'><i class="fa  fa-refresh"></i> 刷新</button>
                         </div>
                     </div>
                     <div class="ibox-content">
@@ -60,12 +60,20 @@
                                             <i class="fa fa-dropbox"></i>
                                             &nbsp;&nbsp;<span class="bold">删除</span>
                                         </button>
-                                         <button type="button" class="btn btn-red " onclick="edit({$i.id})">编辑</button>
                                     </td>
                                 </tr>
                             </foreach>
                             </tbody>
-                           
+                            <tfoot>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>标题</th>
+                                    <th>来源</th>
+                                    <th>浏览量</th>
+                                    <th>发布时间</th>
+                                     <th>操作</th>
+                                </tr>
+                            </tfoot>
                         </table>
 
                     </div>
@@ -81,17 +89,12 @@
     <!--<script src="__PUBLIC__/js/content.min.js?v=1.0.0"></script>-->
      <script src="__PUBLIC__/js/plugins/sweetalert/sweetalert.min.js"></script>
     <script>
-    function edit(id){
-        window.location.href="{:U('News/add')}?id="+id+"&t="+{$t};
-    }    
-        
     $(document).ready(function () {
         $(".table").dataTable(
                 { "bSort": false}
             );  
     });
     var t={$t};
-    
     function del(id){
         swal({
         title: "您确定要删除这条信息吗",

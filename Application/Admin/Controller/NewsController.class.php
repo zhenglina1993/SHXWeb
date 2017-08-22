@@ -26,24 +26,11 @@ class NewsController extends Controller {
         $this->display('table');
     }
     
-    function add($t){
-        $this->assign("t", $t);
-        $id=  I("id");
-        if ($id!=NULL) {
-            $this->assign("title", "编辑新闻");
-            $Dao=D('News');
-            $r=$Dao->where('id='.$id)->find();
-            $this->assign("info", $r);
-            $this->assign("newsId", $r["id"]);
-        }
-        else{
-            $this->assign("newsId", 0);
-            $this->assign("title","添加新闻");
-        }
+    function add(){
         $this->display('add');
     }
     
-    function save($id,$title,$source,$content,$category) {
+    function save($title,$source,$content,$category) {
         
         $News=M("News");
         $News->create();
@@ -55,13 +42,7 @@ class NewsController extends Controller {
         if ($img!=NULL) {
             $News->img=$img;
         }
-        if ($id==0) {
-             $News->add();
-        }
-       else{
-           $News->id=$id;
-           $News->save();
-       }
+        $News->add();
         echo 0;
     }
     

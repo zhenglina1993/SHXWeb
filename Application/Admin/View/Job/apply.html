@@ -24,7 +24,7 @@
                         <div class="ibox-title">
                             <h5 class='pull-left'>应聘管理</h5>
                             <div class=" pull-right ">
-                                <button class="btn btn-primary" type="button" onclick='window.location.reload();'><i class="fa  fa-refresh"></i> 刷新</button>
+                                <button class="btn btn-primary" type="button" onclick='reload();'><i class="fa  fa-refresh"></i> 刷新</button>
                             </div>
                         </div>
                         <div class="ibox-content">
@@ -43,7 +43,7 @@
                                     <th>邮箱</th>
                                     <th>QQ</th>
                                     <th >申请时间</th>
-                                    <!--<th>操作</th>-->
+                                    <th>操作</th>
                                     <th data-hide="all">教育经历</th>
                                     <th data-hide="all">工作经历</th>
                                     <th data-hide="all">联系地址</th>
@@ -62,7 +62,7 @@
                                     <td>{$i.email}</td>
                                     <td>{$i.qq}</td>
                                     <td>{$i.create_dt}</td>
-                                    <!--<td><a href="#"><i class="fa fa-check text-navy"></i> 通过</a></td>-->
+                                    <td><a href="#"><i class="fa fa-check text-navy"></i> 通过</a></td>
                                     <td>{$i.edu_info}</td>
                                     <td>{$i.work_info}</td>
                                     <td>{$i.address}</td>
