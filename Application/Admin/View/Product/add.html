@@ -252,16 +252,19 @@ function _beforeInsertImage(t, result) {
     var imageHtml = ''; 
     for(var i in result){
         imageHtml += '<li><img src="'+result[i].src+'" alt="'+result[i].alt+'" height="150">';
-        imageHtml += '<button class="btn btn-red delImg" onclick="delImg();" type="button"><i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>';
+        imageHtml += '<button class="btn btn-red delImg"  type="button"><i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>';
         imageHtml +='</li>'
     }
     document.getElementById('upload_img_wrap').innerHTML = imageHtml;
 }
 
-function delImg(){
+ //function delImg(){
   //alert('删除图片');
-  $(this).parent("li").remove();
-}
+  $(".delImg").click(function  (argument) {
+      // body...
+     $(this).parent("li").remove();
+    })
+// }
 </script>   
   </div>
  </body>
