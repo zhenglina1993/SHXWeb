@@ -15,11 +15,28 @@ and open the template in the editor.
     <link href="__PUBLIC__/css/style.min.css?v=4.0.0" rel="stylesheet">
      <link href="__PUBLIC__/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
     <!--<link href="__PUBLIC__/status/status.css" rel="stylesheet">-->
-    
+    <style type="text/css">
+            /*添加*/
+        .ibox.float-e-margins{
+            position: relative;
+
+        }
+        .ibox.float-e-margins .ibox-title{
+               position: fixed;
+                width: 100%;
+                height: 57px;
+                border-bottom: 1px solid #e7eaec;
+                background: #fff;
+                z-index: 9999;
+        }
+        .ibox.float-e-margins .ibox-content{
+            padding-top: 82px;
+        }
+    </style>
     </head>
     <body>
        <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>{$title}</h5>

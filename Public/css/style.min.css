@@ -1472,3 +1472,21 @@ body.skin-3 { background: #3e2c42; }
     .bs-glyphicons { margin-right: 0; margin-left: 0; }
     .bs-glyphicons li { width: 12.5%; font-size: 12px; }
 }
+
+.ibox.loat-e-margins{
+    position: relative;
+}
+        .ibox.loat-e-margins .ibox-title{
+               position: fixed;
+                width: 100%;
+                height: 57px;
+                border-bottom: 1px solid #e7eaec;
+                background: #fff;
+                z-index: 9999;
+        }
+        .ibox.loat-e-margins .ibox-content{
+            padding-top: 82px;
+        }
+
+
+
