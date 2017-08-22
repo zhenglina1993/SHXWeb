@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -24,7 +19,15 @@ and open the template in the editor.
             <div class="col-sm-9">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>添加新闻</h5>
+                        <h5>{$title}</h5>
+                        <div class="ibox-tools">
+             <button class="btn btn-primary btn-xs" type="button" onclick="save();"><i class="fa fa-check"></i>保存
+             </button>
+      <if condition="$title eq '添加新闻'"><else />
+            <a href="{:U('News/index')}?t={$t}" class="btn btn-primary btn-xs">返回列表</a>
+        
+      </if>
+        </div>
                     </div>
                     <div class="ibox-content">
                          <div id="ts" />
@@ -32,13 +35,13 @@ and open the template in the editor.
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">标题：</label>
                                 <div class="col-sm-9">
-                                    <input id="tb_title" name="name" placeholder="请输入新闻标题..." minlength="2" type="text" class="form-control" required="" aria-required="true" />
+                                    <input id="tb_title" name="name" value="{$info.title}" placeholder="请输入新闻标题..." minlength="2" type="text" class="form-control" required="" aria-required="true" />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">来源：</label>
                                 <div class="col-sm-9">
-                                    <input id="tb_source" type="text" class="form-control" placeholder="请输入新闻来源..." value="森华信" name="email" required="" aria-required="true">
+                                    <input id="tb_source" type="text" value="{$info.source}" class="form-control" placeholder="请输入新闻来源..." value="森华信" name="email" required="" aria-required="true">
                                 </div>
                             </div>
                          
@@ -56,7 +59,11 @@ and open the template in the editor.
                                 <label class="col-sm-2 control-label">封面：</label>
                                 <div class="col-sm-9">
                                  <button type="button" id="j_upload_img_btn">封面上传</button>
-<ul id="upload_img_wrap"></ul>
+                                 <ul id="upload_img_wrap">
+                                     <notempty>
+                                         <img id="img" src='{$info["img"]}'  height="150" alt="未上传图片"/>;
+                                     </notempty>
+                                 </ul>
 <!-- 加载编辑器的容器 -->
 <textarea id="uploadEditor" style="display: none;"></textarea>
 
@@ -85,6 +92,7 @@ and open the template in the editor.
     <script src="js/plugins/validate/messages_zh.min.js"></script>-->
 <script>
      var ue = UE.getEditor('editor');
+     
      // 实例化编辑器，这里注意配置项隐藏编辑器并禁用默认的基础功能。
  var uploadEditor = UE.getEditor("uploadEditor", {
         isShow: false,
@@ -101,6 +109,8 @@ uploadEditor.ready(function () {
     // 监听插入图片
     uploadEditor.addListener("beforeInsertImage", _beforeInsertImage);
 });
+
+
 document.getElementById('j_upload_img_btn').onclick = function () {
     var dialog = uploadEditor.getDialog("insertimage");
     dialog.title = '图片管理';
@@ -118,6 +128,10 @@ function _beforeInsertImage(t, result) {
     document.getElementById('upload_img_wrap').innerHTML = imageHtml;
 }
 
+ ue.addListener("ready", function () {   
+               ue.setContent('{$info.content}');   
+}); 
+       
 function save(){
     var title=$('#tb_title').val();
     if (title.length<1) {
@@ -134,19 +148,18 @@ function save(){
     if (img==undefined) {
          console.log('未上传图片');
     return false;
-}
+    }
     console.log("img:"+img);
     var category=$('#cb_category').val();
     var content=ue.getContent();
-   $.post('save',{title:title,source:source,img:img,category:category,content:content},function(d){
+   $.post('save',{id:{$newsId},title:title,source:source,img:img,category:category,content:content},function(d){
        if (d==0) {
-    //alert('添加成功.');
-    status("info", "添加成功！");
-    $('#tb_title').val('');
-   // $('#tb_source').val('');
-    var content=ue.setContent('');
-    $('#img').remove();
-}
+         status("info", "添加成功！");
+            $('#tb_title').val('');
+        // $('#tb_source').val('');
+           var content=ue.setContent('');
+            $('#img').remove();
+        }
    })
 }
 </script>
