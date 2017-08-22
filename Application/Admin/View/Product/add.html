@@ -139,7 +139,7 @@ and open the template in the editor.
 <ul id="upload_img_wrap" style='margin: 0;padding: 24px 0 0;list-style: none;'>
     <foreach name='imgs' item='i'>
         <li>
-            <img src="{$i.img}" height="150"><button class="btn btn-red" onclick="delImg();" type="button">
+            <img src="{$i.img}" height="150" class='Imgchange'><button class="btn btn-red delImg" onclick="delImg();" type="button">
              <i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold" style=''>删除</span></button>
         </li>
     </foreach>
@@ -257,14 +257,17 @@ function _beforeInsertImage(t, result) {
     var imageHtml = ''; 
     for(var i in result){
         imageHtml += '<li><img src="'+result[i].src+'" alt="'+result[i].alt+'" height="150">';
-        imageHtml += '<button class="btn btn-red" onclick="delImg();" type="button"><i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>';
+        imageHtml += '<button class="btn btn-red delImg" onclick="delImg();" type="button"><i class="fa fa-dropbox"></i>&nbsp;&nbsp;<span class="bold">删除</span></button>';
         imageHtml +='</li>'
     }
     document.getElementById('upload_img_wrap').innerHTML = imageHtml;
 }
 
 function delImg(){
-  alert('删除图片');
+  $(".delImg").click(function  (argument) {
+      // body...
+      $(this).parent("li").remove();
+    })
 }
 </script>   
   </div>

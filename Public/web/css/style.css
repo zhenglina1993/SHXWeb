@@ -512,6 +512,7 @@ li.mouseover:hover .tablistmod2 p{
 	margin: 118px auto 90px;
 }
 .index_new ul{
+	width: 100%;
 	height: auto;
 	display: table;
 }
@@ -1486,7 +1487,7 @@ li.mouseover:hover .tablistmod2 p{
 .newWrap{
 	width: 100%;
 	padding-top: 90px;
-	background:#fff url(../images/newbg1.png) no-repeat center top;
+	background:#fff url(../images/Rectangle.png) no-repeat center top;
 	background-size: 100%;
 	
 }
@@ -1522,14 +1523,17 @@ li.mouseover:hover .tablistmod2 p{
 	height: auto;
 	overflow: hidden;
 	margin: 0 auto ;
-	padding-bottom: 35px;
-	border-bottom: solid 1px #e0e0e0;
+	/*padding-bottom: 35px;*/
+	/*border-bottom: solid 1px #e0e0e0;*/
 }
 .newwrapList dd{
 	width: 100%;
 	height: auto;
 	overflow: hidden;
 	margin-top: 42px;
+}
+.newwrapList dd:nth-last-child(1) .newwrapInfo{
+	border-bottom: 0;
 }
 .newwrapDate{
 	 width: 100px;
@@ -1597,7 +1601,7 @@ li.mouseover:hover .tablistmod2 p{
   	line-height: 1.63em;
   	color: #828282;
   	margin-top: 14px;
-  	height: 56px;
+  	max-height: 56px;
   	overflow: hidden;
   	overflow:hidden; 
 	text-overflow:ellipsis;
@@ -1617,7 +1621,8 @@ li.mouseover:hover .tablistmod2 p{
 .newwrapPage{
 	width: 1200px;
 	text-align: center;
-	margin-top: 48px;
+	border-top: solid 1px #e0e0e0;
+    padding-top: 48px;
 }
 .newwrapPage span{
 	 width: 38px;
@@ -2138,6 +2143,12 @@ li.mouseover:hover .tablistmod2 p{
   	overflow: hidden;
   	float: right;
 }
+.landinfoRight img{
+	height: 100%;
+	width: auto;
+	margin: 0 auto;
+
+}
 .landinfoRight .swiper-container-horizontal>.swiper-pagination-bullets, 
 .landinfoRight .swiper-pagination-custom, 
 .landinfoRight .swiper-pagination-fraction{
@@ -2418,7 +2429,7 @@ li.mouseover:hover .tablistmod2 p{
   color: rgba(255, 255, 255, 0.7);
 }
 .markrtMod4Bottomleft,.markrtMod4Bottomright{
-	width: 420px;
+	width: 545px;
 	height: 372px;
 	overflow: hidden;
 }
@@ -3596,6 +3607,22 @@ li.mouseover:hover .tablistmod2 p{
 	}
 	.aboutmod2{
 		height: auto;
+	}
+	.index_ProjectList ul{
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		display: block;
+	}
+	.index_ProjectList li:nth-child(3n){
+		margin-right: 5%;
+	}
+	.tab4list .tablistmod2 a{
+		margin-left: 5%;
+	}
+	.newwrapInfo li{
+		margin-bottom: 0;
+		margin-top: 48px;
 	}
 }
 
