@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <coverage xmlns="http://www.netbeans.org/ns/code-coverage/1" enabled="true"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
             <file>file:/D:/GitHub/SHXWeb/Application/Admin/View/Product/add.html</file>
-            <file>file:/D:/GitHub/SHXWeb/Application/Admin/Controller/JobController.class.php</file>
-            <file>file:/D:/GitHub/SHXWeb/Application/Admin/View/Index/login.html</file>
-            <file>file:/D:/GitHub/SHXWeb/Application/Admin/Controller/IndexController.class.php</file>
-            <file>file:/D:/GitHub/SHXWeb/Application/Admin/View/Index/index.html</file>
         </group>
-=======
-        <group/>
->>>>>>> dfa0e7e098c4019c9d22df0b9135d67a89092dde
     </open-files>
 </project-private>
