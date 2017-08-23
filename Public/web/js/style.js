@@ -9,6 +9,38 @@ $(function  () {
 	else if(getClientInfo()==false){
 		phoneClickmenu()
 	}
+
+
+	$("#search").bind("click",function  () {
+		if($(this).hasClass("Active")){
+			$(".headerWrap").attr("style","");
+			$(this).removeClass("Active");
+			$(".headertab").show();
+			$(".searchinput").remove();
+			$(".logo").attr("style",'');
+		}
+		else{
+			$("#search").removeClass("Active");
+			$(this).addClass("Active");
+			$(".headerWrap").attr("style","background:#003319;");
+			$(".headertab").hide();
+			$(".logo").attr("style","background-image:url(/Public/web/images/logo3.png);");
+			$(this).after("<input type='text' class='searchinput' placeholder='请输入搜索关键词' />");
+			
+			$(".searchinput").bind("keydown",function  (argument) {
+				var searchKeyword=$(".searchinput").val();
+				if(argument.keyCode == "13")
+				 {
+				   	window.location.href='/index.php/Home/Index/search?keywords='+searchKeyword+''
+				 }
+			})
+		}
+	})
+
+	$(".hoverCode").mouseover(function(){$(".hoverCodeimg").show()})
+	$(".hoverCode").mouseleave(function(){$(".hoverCodeimg").hide()})
+	
+
 })
 //头部菜单
 function headMenu () {
@@ -151,10 +183,15 @@ function joinshow () {
 		var box=$(this).parents("tr").next("tr").find('.workInfo');
 	
 		if(box.hasClass("Active")){
+			$(this).addClass("active");
 			box.removeClass("Active").addClass("hide").hide();
 		}
 		else{
 			$('.workInfo').hide();
+			$(".workJob").removeClass("active");
+
+			$(this).addClass("active");
+			
 			box.addClass("Active").removeClass("hide").show();
 		}
 	})
@@ -196,7 +233,6 @@ function getClientInfo(){
     }
     return flag;
 }
-
 
 
 

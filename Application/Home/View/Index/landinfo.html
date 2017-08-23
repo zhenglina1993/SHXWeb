@@ -39,12 +39,8 @@
                                 </p>
 			</div>
 			<div class="landinfoLeftBottom">
-                            <!-- <input type="button" value='{$info["sell"]==0?"在售":"已售罄"}'> -->
-                            <if condition='$item.sell eq 0'>
-                            	<input type="button" value='在售' style='background-color: #bf9d5a;'>
-                                    <else />
-                                     <input type="button" value='已售罄'>
-                            </if>
+                            <input type="button" value='{$info["sell"]==0?"在售":"已售罄"}'>
+                          
 			</div>
 		</div>
 		<div class="landinfoRight">
@@ -68,8 +64,9 @@
 	<div class="aboutcontainer">
 		<div class="landinfo2mod">
 			<div class="landinfo2modHead">
-				<h2 class='fl'>项目介绍</h2>
-				<p class='fr'>关注公众号了解项目信息</p>
+				<h2 class="fl">项目介绍</h2>
+				<p class="fr hoverCode">关注公众号了解项目信息</p>
+				<img src="/Public/web/images/people.png" alt="" class="hoverCodeimg hide">
 			</div>
 			<div class="landinfo2modCount">
                             {$info.content}

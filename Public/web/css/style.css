@@ -57,6 +57,9 @@ color: #c6c6c6 !important;
 :-ms-input-placeholder { /* Internet Explorer 10+ */ 
 color: #c6c6c6 !important; 
 } 
+
+
+
 .bg_green{
 	background: #003319;
 }
@@ -104,7 +107,7 @@ img{
 	left: 0;
 	z-index: 99999;
 	background: rgba(255, 255, 255, 0.9);
-	transition: height .2s cubic-bezier(0,0,.2,1) 0ms;
+	    transition: all .3s ease-in-out;
 }
 .header{
 	width: 1200px;
@@ -1212,11 +1215,11 @@ li.mouseover:hover .tablistmod2 p{
 .joinWrap1 .changeselect select{
 	width: 255px;
 	  height: 42px;
-	  background-color: #f8f8f8;
 	  border: solid 1px #e5e5e5;
 	  text-indent: 1em;
 	  font-size: 14px;
 	  margin-left: 24px;
+	  background: #f8f8f8 url(../images/arrow_both.png) no-repeat 90% center;
 }
 .joinWrap2 .aboutcontainer{
 	margin: 0 auto 18px;
@@ -1251,6 +1254,16 @@ li.mouseover:hover .tablistmod2 p{
 	color: #003319;
 	font-weight: 500;
 	cursor: pointer;
+	background:url(../images/arrow.png) no-repeat center right;
+	padding-right: 14px;
+}
+.workTable td span.workJob.active{
+	font-size: 16px;
+	color: #003319;
+	font-weight: 500;
+	cursor: pointer;
+	background:url(../images/arrow1.png) no-repeat center right;
+	padding-right: 14px;
 }
 .workTable td span.workJob:hover{
 	color: #BF9D5A;
@@ -1752,6 +1765,7 @@ li.mouseover:hover .tablistmod2 p{
   text-indent: 1em;
   margin-right: 18px;
   margin-top: 19px;
+      background: #f8f8f8 url(../images/arrow_both.png) no-repeat 90% center;
 }
 .profilter input{
 	width: 142px;
@@ -2130,7 +2144,7 @@ li.mouseover:hover .tablistmod2 p{
 	width: 290px;
   	height: 48px;
   	border-radius: 3px;
-  	background-color: #cccccc;
+  	background-color: #bf9d5a;
   	margin: 0 auto;
   	border: none;
   	display: block;
@@ -2177,8 +2191,9 @@ li.mouseover:hover .tablistmod2 p{
 	padding: 30px;
 }
 .landinfo2mod .landinfo2modHead{
-	height: auto;
-	overflow: hidden;
+	height: 33px;
+	position: relative;
+
 	padding-bottom: 25px;
 	border-bottom: solid 1px #eeeeee;
 }
@@ -2206,6 +2221,16 @@ li.mouseover:hover .tablistmod2 p{
   color: #171717;
   margin-bottom: 30px;
 }
+.hoverCodeimg{
+	transition: all .3s ease-in-out;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 90px;
+    top: 46px;
+}
+
+
 
 /*营销策划*/
 .marketBanner{
@@ -2894,9 +2919,11 @@ li.mouseover:hover .tablistmod2 p{
 .searchWrap2 .newwrapInfo li{
 	border-bottom: solid 1px #e0e0e0;
 }
-.searchWrap2 .newwrapInfo{
-
+.searchWrap2 .newwrapInfo li:nth-last-child(1){
+	border-bottom: 0;
+	padding-bottom: 0;
 }
+
 .searchWrap2 .newwrapList,.searchWrap2 .newwrapInfo{
 	border-bottom: none;
 }
@@ -2915,6 +2942,27 @@ li.mouseover:hover .tablistmod2 p{
 	z-index: 1;
 	top: 0;
 	left: 0;
+}
+.searchWrap2 .newwrapInfo{
+	width: 1000px;
+}
+
+#search.Active a{
+	background: url(../images/close.png) no-repeat center;
+	background-size: 15px;
+}
+.searchinput{
+	background:url(../images/search.png) no-repeat center left;
+	background-size: 15px;
+	width: 700px;
+	height: 40px;
+	padding-left: 40px;
+	color: #fff;
+	font-size: 16px;
+	overflow: hidden;
+	margin:20px 0;
+	border:none;
+	float: right;
 }
 
 
@@ -3302,6 +3350,7 @@ li.mouseover:hover .tablistmod2 p{
 		margin-left: 5%;
 		float: left;
 		margin-right: 0;
+		background: #f8f8f8 url(../images/arrow_both.png) no-repeat 90% center;
 	}
 	.profilter input{
 		width: 90%;
@@ -3531,6 +3580,7 @@ li.mouseover:hover .tablistmod2 p{
 		width: 44%;
 		margin-right: 5%;
 		float: left;
+		background: #f8f8f8 url(../images/arrow_both.png) no-repeat 90% center;
 	}
 	.workTable th{
 		width: inherit!important;
